@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    @@include('./layout/head.html')
+</head>
+<body>
+    <div id="wrap">
+        <!-- header -->
+        @@include('./layout/header.html', {
+            sub04 : true
+        })
+        <!-- // header -->
+
+        <!-- container -->
+        <div id="container" class="container-fluid">
+            <div class="row">
+                <!-- lnb -->
+                @@include('./layout/lnb.html', {
+                    sub04 : '05'
+                })
+                <!-- // lnb -->
+
+                <!-- contents -->
+                <main id="main">
+                    @@include('./layout/page-title.html', {
+                        sub04 : true,
+                        page : '유병자보험 기획관 관리'
+                    })
+
+                    @@include('./modules/filter.html', {
+                        order:true,
+                    })
+
+                    @@include('./modules/list-table.html', {
+                        sub04type : true,
+                        control : true,
+                        page : '/page/sub_04_05_write.html'
+                    })
+
+                    @@include('./modules/pagination.html')
+                </main>
+                <!-- // contents -->
+            </div>
+        </div>
+        <!-- // container -->
+    </div>
+    @@include('./layout/foot.html')
+</body>
+</html>

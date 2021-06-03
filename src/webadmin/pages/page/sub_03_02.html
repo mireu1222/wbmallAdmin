@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    @@include('./layout/head.html')
+</head>
+<body>
+    <div id="wrap">
+        <!-- header -->
+        @@include('./layout/header.html', {
+            sub03 : true
+        })
+        <!-- // header -->
+
+        <!-- container -->
+        <div id="container" class="container-fluid">
+            <div class="row">
+                <!-- lnb -->
+                @@include('./layout/lnb.html', {
+                    sub03 : '02'
+                })
+                <!-- // lnb -->
+
+                <!-- contents -->
+                <main id="main">
+                    @@include('./layout/page-title.html', {
+                        sub03 : true,
+                        page : '가망고객관리'
+                    })
+
+                    @@include('./modules/list-search.html', {
+                        period : true,
+                        route : true,
+                        word : true
+                    })
+
+                    @@include('./modules/filter.html')
+
+                    @@include('./modules/list-table.html', {
+                        sub03type : '02',
+                        control : true,
+                        page : 'sub_03_02_edit'
+                    })
+
+                    @@include('./modules/pagination.html')
+                </main>
+                <!-- // contents -->
+            </div>
+        </div>
+        <!-- // container -->
+    </div>
+    @@include('./layout/foot.html')
+</body>
+</html>

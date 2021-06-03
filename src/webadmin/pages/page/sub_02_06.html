@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    @@include('./layout/head.html')
+</head>
+<body>
+    <div id="wrap">
+        <!-- header -->
+        @@include('./layout/header.html', {
+            sub02 : true
+        })
+        <!-- // header -->
+
+        <!-- container -->
+        <div id="container" class="container-fluid">
+            <div class="row">
+                <!-- lnb -->
+                @@include('./layout/lnb.html', {
+                    sub02 : '06'
+                })
+                <!-- // lnb -->
+
+                <!-- contents -->
+                <main id="main">
+                    @@include('./layout/page-title.html', {
+                        sub02 : true,
+                        page : '온라인가입신청'
+                    })
+
+                    @@include('./modules/list-search.html', {
+                        rowspan : 'col6-3',
+                        sub02 : true
+                    })
+
+                    @@include('./modules/filter.html')
+
+                    @@include('./modules/list-table.html', {
+                        sub02type : '06',
+                        control : true,
+                        page : 'sub_02_06_edit'
+                    })
+
+                    @@include('./modules/pagination.html')
+                </main>
+                <!-- // contents -->
+            </div>
+        </div>
+        <!-- // container -->
+    </div>
+    @@include('./layout/foot.html')
+</body>
+</html>

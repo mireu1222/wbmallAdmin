@@ -1,0 +1,567 @@
+<!-- write form -->
+<div class="form-wrap">
+    <table class="table row-table caption-top">
+        <caption><i class="bi bi-pencil-square"></i>@@caption</caption>
+        <colgroup>
+            <col style="width:20%">
+            <col>
+        </colgroup>
+        @@if(context.sub0704type){
+        <tbody>
+            <tr>
+                <th scope="row">상태</th>
+                <td class="align-middle">
+                    <div class="d-flex gap-4 align-items-center">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="rdo-state" id="rdo-state01">
+                            <label class="form-check-label" for="rdo-state01">정상</label>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="rdo-state" id="rdo-state02">
+                                <label class="form-check-label" for="rdo-state02">정지</label>
+                            </div>
+                            <input type="text" class="form-control form-control-sm w-auto" placeholder="정지사유 입력">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">부서</th>
+                <td class="align-middle">
+                    <select class="form-select form-select-sm w-auto" aria-label="부서 선택">
+                        <option value="">고객상담팀</option>
+                        <option value="">경원관리팀</option>
+                        <option value="">설계사</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">이름</th>
+                <td class="align-middle">
+                    <input type="text" class="form-control form-control-sm">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">소속</th>
+                <td class="align-middle">
+                    <input type="text" class="form-control form-control-sm">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">직급</th>
+                <td class="align-middle">
+                    <input type="text" class="form-control form-control-sm">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">입사일</th>
+                <td class="align-middle">
+                    <div class="slt-date">
+                        <div class="dates d-flex align-items-center">
+                            <div class="datepicker-wrap">
+                                <i class="bi bi-calendar-check"></i>
+                                <input type="text" class="form-control form-control-sm datepicker-here" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            @@if(context.sub0704type === 'edit'){
+            <tr>
+                <th scope="row">등록일</th>
+                <td class="align-middle">2021.03.21 10:00:00</td>
+            </tr>  
+            <tr>
+                <th scope="row">비밀번호</th>
+                <td class="align-middle">
+                    <button type="button" class="btn btn-sm btn-danger">비밀번호 초기화</button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">최근 로그인</th>
+                <td class="align-middle">2021.03.21 10:00:00</td>
+            </tr>
+            <tr>
+                <th scope="row">정지일</th>
+                <td class="align-middle">2021.03.21 10:00:00</td>
+            </tr>  
+            }
+            @@if(context.sub0704type !== 'edit'){
+            <tr>
+                <th scope="row">비밀번호</th>
+                <td class="align-middle">
+                    <input type="password" class="form-control form-control-sm" placeholder="영문, 숫자, 특수문자 포함 8자 이상 입력">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">비밀번호 확인</th>
+                <td class="align-middle">
+                    <input type="password" class="form-control form-control-sm" placeholder="비밀번호 동일하게 재 입력">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">이메일</th>
+                <td class="align-middle">
+                    <input type="text" class="form-control form-control-sm">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">휴대폰번호</th>
+                <td class="align-middle">
+                    <input type="text" class="form-control form-control-sm" maxlength="11">
+                </td>
+            </tr>
+            }
+        </tbody>
+        }
+        @@if(context.sub04type){
+        <tbody>
+            <tr>
+                <th scope="row"><label for="ipt-title">제목</label></th>
+                <td><input type="text" id="ipt-title" class="form-control form-control-sm"></td>
+            </tr>
+            <tr>
+                <th scope="row"><label for="ipt-desc">설명</label></th>
+                <td><input type="text" id="ipt-desc" class="form-control form-control-sm"></td>
+            </tr>
+            <tr>
+                <th scope="row">내용</th>
+                <td>
+                    <textarea class="form-control form-control-sm">에디터 호출 영역</textarea>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">썸네일 이미지</th>
+                <td>
+                    <div>
+                        <input class="form-control form-control-sm" type="file" id="file-upload">
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+        }
+        @@if(context.sub0601type){
+        <tbody>
+            <tr>
+                <th scope="row"><label for="ipt-title">제목</label></th>
+                <td>
+                    <input type="text" id="ipt-title" class="form-control form-control-sm">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">공지기간</th>
+                <td>
+                    <div class="slt-date d-flex align-items-center gap-2">
+                        <div class="dates d-flex align-items-center">
+                            <div class="datepicker-wrap">
+                                <i class="bi bi-calendar-check"></i>
+                                <input type="text" class="form-control form-control-sm datepicker-here" readonly>
+                            </div>
+                            <span class="bar">~</span>
+                            <div class="datepicker-wrap">
+                                <i class="bi bi-calendar-check"></i>
+                                <input type="text" class="form-control form-control-sm datepicker-here" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">팝업크기</th>
+                <td>
+                    <div class="d-flex align-items-center gap-2">
+                        <input type="text" class="form-control form-control-sm w-small" placeholder="width" title="팝업크기중 width값 픽셀 입력">
+                        <span class="bar">X</span>
+                        <input type="text" class="form-control form-control-sm w-small" placeholder="height" title="팝업크기중 height값 픽셀 입력">
+                        <p class="notice-txt align-self-end">* 픽셀(도트)단위의 숫자만 입력하세요.</p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">팝업위치</th>
+                <td>
+                    <div class="d-flex align-items-center gap-2">
+                        <input type="text" class="form-control form-control-sm w-small" placeholder="왼쪽" title="팝업위치중 왼쪽 거리값 픽셀 입력">
+                        <span class="bar">,</span>
+                        <input type="text" class="form-control form-control-sm w-small" placeholder="위" title="팝업위치중 위로부터 거리값 픽셀 입력">
+                        <p class="notice-txt align-self-end">* 픽셀(도트)단위의 숫자만 입력하세요.</p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row"><label for="ipt-url">URL</label></th>
+                <td>
+                    <input type="text" id="ipt-url" class="form-control form-control-sm">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row"><label for="slt-target">링크타겟</label></th>
+                <td>
+                    <select id="slt-target" class="form-select form-select-sm d-inline-block w-auto">
+                        <option value="">새창</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">내용</th>
+                <td>
+                    <textarea class="form-control form-control-sm">에디터 호출 영역</textarea>
+                </td>
+            </tr>
+        </tbody>
+        }
+        @@if(context.sub0602type){
+        <tbody>
+            <tr>
+                <th scope="row"><label for="ipt-title">제목</label></th>
+                <td>
+                    <input type="text" id="ipt-title" class="form-control form-control-sm">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">노출기간</th>
+                <td>
+                    <div class="slt-date d-flex align-items-center gap-2">
+                        <div class="dates d-flex align-items-center">
+                            <div class="datepicker-wrap">
+                                <i class="bi bi-calendar-check"></i>
+                                <input type="text" class="form-control form-control-sm datepicker-here" readonly>
+                            </div>
+                            <span class="bar">~</span>
+                            <div class="datepicker-wrap">
+                                <i class="bi bi-calendar-check"></i>
+                                <input type="text" class="form-control form-control-sm datepicker-here" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">배너이미지</th>
+                <td>
+                    <div>
+                        <input class="form-control form-control-sm" type="file" id="file-upload">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row"><label for="ipt-alt">이미지 설명(alt)</label></th>
+                <td>
+                    <input type="text" id="ipt-alt" class="form-control form-control-sm">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row"><label for="ipt-url">URL</label></th>
+                <td>
+                    <input type="text" id="ipt-url" class="form-control form-control-sm">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row"><label for="slt-target">링크타겟</label></th>
+                <td>
+                    <select id="slt-target" class="form-select form-select-sm d-inline-block w-auto">
+                        <option value="">새창</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">노출여부</th>
+                <td class="align-middle">
+                    <div class="d-flex gap-4">
+                        <div class="form-check mb-0">
+                            <input class="form-check-input" type="radio" name="rdo" id="rdo01" value="" checked>
+                            <label class="form-check-label" for="rdo01">Y</label>
+                        </div>
+                        <div class="form-check mb-0">
+                            <input class="form-check-input" type="radio" name="rdo" id="rdo02" value="">
+                            <label class="form-check-label" for="rdo02">N</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>    
+        }
+        @@if(context.sub0604type){
+        <tbody>
+            <tr>
+                <th scope="row"><label for="ipt-title">제목</label></th>
+                <td><input type="text" id="ipt-title" class="form-control form-control-sm"></td>
+            </tr>
+            <tr>
+                <th scope="row">공지</th>
+                <td class="align-middle">
+                    <div class="form-check form-check-inline mb-0">
+                        <input type="checkbox" class="form-check-input" value="" id="chk-notice">
+                        <label class="form-check-label" for="chk-notice">
+                            공지글 설정
+                        </label>
+                      </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">내용</th>
+                <td>
+                    <textarea class="form-control form-control-sm">에디터 호출 영역</textarea>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">첨부파일</th>
+                <td>
+                    <div>
+                        <input class="form-control form-control-sm" type="file" id="file-upload">
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+        }
+        @@if(context.sub0605type){
+        <tbody>
+            <tr>
+                <th scope="row"><label for="ipt-title">이벤트 제목</label></th>
+                <td><input type="text" id="ipt-title" class="form-control form-control-sm"></td>
+            </tr>
+            <tr>
+                <th scope="row"><label for="ipt-writter">작성자</label></th>
+                <td><input type="text" id="ipt-writter" class="form-control form-control-sm form-control-plaintext type2" value="운영자" readonly></td>
+            </tr>
+            <tr>
+                <th scope="row"><label for="ipt-c-date">작성일</label></th>
+                <td><input type="text" id="ipt-c-date" class="form-control form-control-sm form-control-plaintext type2" value="2021.05.01" readonly></td>
+            </tr>
+            <tr>
+                <th scope="row">썸네일 이미지</th>
+                <td>
+                    <input class="form-control form-control-sm" type="file" id="file-upload">
+                    <p class="notice-txt mt-1">* 이미지 크기는 315 X 91 픽셀, 확장자는 jpg로 작업해주세요.</p>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">상세 이미지</th>
+                <td>
+                    <textarea class="form-control form-control-sm">에디터 호출 영역</textarea>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">이벤트기간</th>
+                <td>
+                    <div class="slt-date d-flex align-items-center gap-2">
+                        <div class="dates d-flex align-items-center">
+                            <div class="datepicker-wrap">
+                                <i class="bi bi-calendar-check"></i>
+                                <input type="text" class="form-control form-control-sm datepicker-here" data-timepicker="true" data-position="top left" readonly>
+                            </div>
+                            <span class="bar">~</span>
+                            <div class="datepicker-wrap">
+                                <i class="bi bi-calendar-check"></i>
+                                <input type="text" class="form-control form-control-sm datepicker-here" data-timepicker="true" data-position="top left" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">이벤트 발표일</th>
+                <td>
+                    <div class="slt-date d-flex align-items-center gap-2">
+                        <div class="dates d-flex align-items-center">
+                            <div class="datepicker-wrap">
+                                <i class="bi bi-calendar-check"></i>
+                                <input type="text" class="form-control form-control-sm datepicker-here" data-timepicker="true" data-position="top left" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">html 첨부</th>
+                <td>
+                    <div>
+                        <input class="form-control form-control-sm" type="file" id="file-upload">
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+        }
+        @@if(context.sub0701type){
+        <tbody>
+            <tr>
+                <th scope="row">사용자 상태</th>
+                <td class="align-middle">
+                    <div class="d-flex gap-4 align-items-center">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="rdo-state" id="rdo-state01">
+                            <label class="form-check-label" for="rdo-state01">정상</label>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="rdo-state" id="rdo-state02">
+                                <label class="form-check-label" for="rdo-state02">정지</label>
+                            </div>
+                            <input type="text" class="form-control form-control-sm w-auto" placeholder="정지사유 입력">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row"><label for="ipt-id">이메일(ID)</label></th>
+                <td class="align-middle">
+                    <input type="text" id="ipt-id" class="form-control form-control-sm">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row"><label for="ipt-name">이름</label></th>
+                <td class="align-middle">
+                    <input type="text" id="ipt-name" class="form-control form-control-sm">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row"><label for="ipt-phone">휴대폰 번호</label></th>
+                <td class="align-middle">
+                    <input type="text" id="ipt-phone" class="form-control form-control-sm" placeholder="'-'없이 11자리 입력" maxlength="11">
+                </td>
+            </tr>
+            @@if(context.modify){
+            <tr>
+                <th scope="row">최종 로그인 일시</th>
+                <td class="align-middle">2020.08.10 10:11</td>
+            </tr>
+            }
+            <tr>
+                <th scope="row"><label for="slt-teams">부서</label></th>
+                <td class="align-middle">
+                    <div class="d-flex gap-1">
+                        <select id="slt-teams" class="form-select form-select-sm w-25">
+                            <option value="">전체</option>
+                        </select>
+                        <button type="button" class="btn btn-sm btn-secondary collapsed btn-collapse" data-bs-toggle="collapse" data-bs-target="#team-adds" aria-expanded="false" aria-controls="team-adds"></button>
+                    </div>
+                    <div id="team-adds" class="collapse pt-2">
+                        <div class="d-flex gap-1">
+                            <input type="text" class="form-control form-control-sm w-25" placeholder="추가할 부서명을 입력">
+                            <button type="button" class="btn btn-sm btn-primary">추가</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row"><label for="ipt-rank">직급</label></th>
+                <td class="align-middle">
+                    <input type="text" id="ipt-rank" class="form-control form-control-sm">
+                </td>
+            </tr>
+            @@if(context.write){
+            <tr>
+                <th scope="row"><label for="ipt-pw">비밀번호</label></th>
+                <td class="align-middle">
+                    <input type="password" id="ipt-pw" class="form-control form-control-sm" placeholder="영문, 숫자, 특수문자 포함 8자 이상 입력">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row"><label for="ipt-pw-re">비밀번호 확인</label></th>
+                <td class="align-middle">
+                    <input type="password" id="ipt-pw-re" class="form-control form-control-sm" placeholder="비밀번호 동일하게 재 입력">
+                </td>
+            </tr>
+            }
+            @@if(context.modify){
+            <tr>
+                <th scope="row">비밀번호</th>
+                <td class="align-middle">
+                    <button type="button" class="btn btn-sm btn-danger">비밀번호 초기화</button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">등록일</th>
+                <td class="align-middle">2020.08.10 10:11</td>
+            </tr>
+            <!-- 회원상태가 정지일 때 -->
+            <tr>
+                <th scope="row">정지일</th>
+                <td class="align-middle">2020.08.10 10:11</td>
+            </tr>
+            <!-- // 회원상태가 정지일 때 -->
+            }
+            <tr>
+                <th scope="row">권한 설정</th>
+                <td class="align-middle">
+                    <div class="list-group">
+                        <label for="chk-authority01" class="list-group-item">
+                            <input type="checkbox" id="chk-authority01" class="form-check-input" name="chk-authority" value="">
+                            보험관리
+                        </label>
+                        <label for="chk-authority02" class="list-group-item">
+                            <input type="checkbox" id="chk-authority02" class="form-check-input" name="chk-authority" value="">
+                            보험검색
+                        </label>
+                        <label for="chk-authority03" class="list-group-item">
+                            <input type="checkbox" id="chk-authority03" class="form-check-input" name="chk-authority" value="">
+                            보험상담관리
+                        </label>
+                        <label for="chk-authority04" class="list-group-item">
+                            <input type="checkbox" id="chk-authority04" class="form-check-input" name="chk-authority" value="">
+                            보험기획관리
+                        </label>
+                        <label for="chk-authority05" class="list-group-item">
+                            <input type="checkbox" id="chk-authority05" class="form-check-input" name="chk-authority" value="">
+                            현황/통계
+                        </label>
+                        <label for="chk-authority06" class="list-group-item">
+                            <input type="checkbox" id="chk-authority06" class="form-check-input" name="chk-authority" value="">
+                            사이트관리
+                        </label>
+                        <label for="chk-authority07" class="list-group-item">
+                            <input type="checkbox" id="chk-authority07" class="form-check-input" name="chk-authority" value="">
+                            시스템(설정)관리
+                        </label>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+        }
+        @@if(context.sub0702type){
+        <tbody>
+            <tr>
+                <th scope="row">성명</th>
+                <td class="align-middle">홍길동</td>
+            </tr>
+            <tr>
+                <th scope="row">이메일(ID)</th>
+                <td class="align-middle">ddd@mail.com</td>
+            </tr>
+            <tr>
+                <th scope="row"><label for="ipt-pw">새 비밀번호</label></th>
+                <td class="align-middle">
+                    <input type="password" id="ipt-pw" class="form-control form-control-sm" placeholder="영문, 숫자, 특수문자 포함 8자 이상 입력">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row"><label for="ipt-pw-re">새 비밀번호 확인</label></th>
+                <td class="align-middle">
+                    <input type="password" id="ipt-pw-re" class="form-control form-control-sm" placeholder="비밀번호 동일하게 재 입력">
+                </td>
+            </tr>
+        </tbody>
+        }
+    </table>
+    <div class="btn-wrap d-flex justify-content-end mt-3 gap-1">
+        @@if(context.btntype === 'complete'){
+        <button type="submit" class="btn btn-sm btn-primary submit">등록</button>
+        <a href="/webadmin@@prev" class="btn btn-sm btn-secondary submit">취소</a>
+        }
+        @@if(context.btntype === 'save'){
+        <button type="submit" class="btn btn-sm btn-primary submit">저장</button>
+        <a href="/webadmin@@prev" class="btn btn-sm btn-secondary submit">취소</a>
+        }
+        @@if(context.btntype === 'modify'){
+        <a href="/webadmin@@prev" class="btn btn-sm btn-secondary submit me-auto">취소</a>
+        <button type="submit" class="btn btn-sm btn-primary submit">저장</button>
+        <button type="button" class="btn btn-sm btn-danger submit">삭제</button>
+        }
+        @@if(context.btntype === 'password'){
+        <button type="submit" class="btn btn-sm btn-primary submit">저장</button>
+        <input type="reset" class="btn btn-sm btn-secondary submit" value="취소">
+        }
+    </div>
+</div>
+<!-- // write form -->

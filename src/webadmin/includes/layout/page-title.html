@@ -1,0 +1,37 @@
+<div class="page-title-wrap">
+    <!-- page-title -->
+    <h2 class="page-title">@@page</h2>
+    <!-- // page-title -->
+    <!-- breadcrumb -->
+    <nav class="breadcrumb-wrap" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">HOME</li>
+            @@if(context.sub01){
+            <li class="breadcrumb-item">보험관리</li>
+                @@if(context.sub01 === 'sub'){
+                <li class="breadcrumb-item">보험상품관리</li>    
+                }
+            }
+            @@if(context.sub02){
+            <li class="breadcrumb-item">접수관리</li>
+            }
+            @@if(context.sub03){
+            <li class="breadcrumb-item">고객관리</li>
+            }
+            @@if(context.sub04){
+            <li class="breadcrumb-item">보험기획관관리</li>
+            }
+            @@if(context.sub05){
+            <li class="breadcrumb-item">현황/통계</li>
+            }
+            @@if(context.sub06){
+            <li class="breadcrumb-item">사이트관리</li>
+            }
+            @@if(context.sub07){
+            <li class="breadcrumb-item">시스템(설정)관리</li>
+            }
+            <li class="breadcrumb-item active" aria-current="page">@@page</li>
+        </ol>
+    </nav>
+    <!-- // breadcrumb -->
+</div>

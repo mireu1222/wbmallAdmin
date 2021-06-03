@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    @@include('./layout/head.html')
+</head>
+<body>
+    <div id="wrap">
+        <!-- header -->
+        @@include('./layout/header.html', {
+            sub02 : true
+        })
+        <!-- // header -->
+
+        <!-- container -->
+        <div id="container" class="container-fluid">
+            <div class="row">
+                <!-- lnb -->
+                @@include('./layout/lnb.html', {
+                    sub02 : '05'
+                })
+                <!-- // lnb -->
+
+                <!-- contents -->
+                <main id="main">
+                    @@include('./layout/page-title.html', {
+                        sub02 : true,
+                        page : '온라인상담신청'
+                    })
+
+                    <div class="form-wrap">
+                        <section>
+                            <h3 class="tbl-title"><i class="bi bi-pencil-square"></i>상담신청 정보</h3>
+                            <table class="table row-table">
+                                <colgroup>
+                                    <col style="width:20%">
+                                    <col>
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">이름</th>
+                                        <td><input type="text" class="form-control form-control-sm" value="권선생"></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">성별</th>
+                                        <td class="align-middle">
+                                            <div class="d-flex gap-4">
+                                                <div class="form-check mb-0">
+                                                    <input class="form-check-input" type="radio" name="rdo" id="rdo01" value="" checked>
+                                                    <label class="form-check-label" for="rdo01">남자</label>
+                                                </div>
+                                                <div class="form-check mb-0">
+                                                    <input class="form-check-input" type="radio" name="rdo" id="rdo02" value="">
+                                                    <label class="form-check-label" for="rdo02">여자</label>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">생년월일</th>
+                                        <td>
+                                            <div class="d-flex align-items-center gap-3">
+                                                <input type="text" class="form-control form-control-sm w-auto" value="19820101">
+                                                <p>(보험나이 <strong class="text-primary">40</strong>세)</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">휴대폰번호</th>
+                                        <td class="align-middle">010-0000-0000</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">신청시간</th>
+                                        <td class="align-middle">2021.04.15 11:00</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">문의보험상품</th>
+                                        <td class="align-middle">
+                                            @@include('./modules/chk-loop.html',{
+                                                chk : 'chk-prod',
+                                                slt : [
+                                                    '무해지환급형보험', '의료실비보험', '암보험', '치아보험', '건강보험', '어린이/태아보험',
+                                                    '운전자보험', '상해/골프보험', '종신/정기보험', '저축/연금보험', '치매간병/실버보험'
+                                                ]
+                                            })
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">예상보험료</th>
+                                        <td class="align-middle">
+                                            @@include('./modules/chk-loop.html',{
+                                                rdo : 'rdo-slt',
+                                                slt : [
+                                                    '최소보장(20,000~30,000원대)', '기본보장(30,000~40,000원대)', '많은보장(50,000원대 이상)'
+                                                ]
+                                            })
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">보험선택기준</th>
+                                        <td class="align-middle">
+                                            @@include('./modules/chk-loop.html',{
+                                                rdo : 'rdo-slt2',
+                                                slt : [
+                                                    '동일보장에 저렴한 보험', '보장이 잘되는 보험', '알려진 브랜드 보험'
+                                                ]
+                                            })
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                        <section>
+                            <h3 class="tbl-title"><i class="bi bi-pencil-square"></i>상담사 배정</h3>
+                            <table class="table row-table">
+                                <colgroup>
+                                    <col style="width:20%">
+                                    <col>
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">상담사</th>
+                                        <td>
+                                            <div class="d-flex gap-1">
+                                                <input type="text" class="form-control form-control-sm w-25" value="김상담설계사">
+                                                <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#counselor-search">찾기</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                        <div class="btn-wrap d-flex justify-content-end mt-3 gap-1">
+                            <button type="submit" class="btn btn-sm btn-primary submit">완료</button>
+                            <a href="/webadmin/page/sub_02_04.html" class="btn btn-sm btn-secondary submit">취소</a>
+                        </div>
+                    </div>
+                </main>
+                <!-- // contents -->
+            </div>
+        </div>
+        <!-- // container -->
+    </div>
+
+    <!-- modal -->
+    <article id="counselor-search" class="modal big fade" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="modal-title">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="modal-title" class="modal-title">상담사 목록</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="닫기"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex gap-1">
+                        <input type="text" class="form-control form-control-sm" placeholder="상담사 이름을 입력하세요.">
+                        <button type="button" class="btn btn-sm btn-dark">검색</button>
+                    </div>
+                    <table class="table table-hover align-middle text-center mt-4">
+                        <thead class="table-gray">
+                            <tr>
+                                <th scope="col">부서</th>
+                                <th scope="col">이름</th>
+                                <th scope="col">소속</th>
+                                <th scope="col">직급</th>
+                                <th scope="col">휴대폰번호</th>
+                                <th scope="col">적용</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>고객상담팀</td>
+                                <td>김상담</td>
+                                <td>경인사업부</td>
+                                <td>팀장</td>
+                                <td>010-0000-0000</td>
+                                <td><button type="button" class="btn btn-sm btn-outline-primary">적용</button></td>
+                            </tr>
+                            <tr>
+                                <td>고객상담팀</td>
+                                <td>김상담</td>
+                                <td>경인사업부</td>
+                                <td>팀장</td>
+                                <td>010-0000-0000</td>
+                                <td><button type="button" class="btn btn-sm btn-outline-primary">적용</button></td>
+                            </tr>
+                            <tr>
+                                <td>고객상담팀</td>
+                                <td>김상담</td>
+                                <td>경인사업부</td>
+                                <td>팀장</td>
+                                <td>010-0000-0000</td>
+                                <td><button type="button" class="btn btn-sm btn-outline-primary">적용</button></td>
+                            </tr>
+                            <tr>
+                                <td>고객상담팀</td>
+                                <td>김상담</td>
+                                <td>경인사업부</td>
+                                <td>팀장</td>
+                                <td>010-0000-0000</td>
+                                <td><button type="button" class="btn btn-sm btn-outline-primary">적용</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </article>
+    <!-- // modal -->
+    @@include('./layout/foot.html')
+</body>
+</html>

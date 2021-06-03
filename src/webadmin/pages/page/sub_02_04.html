@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    @@include('./layout/head.html')
+</head>
+<body>
+    <div id="wrap">
+        <!-- header -->
+        @@include('./layout/header.html', {
+            sub02 : true
+        })
+        <!-- // header -->
+
+        <!-- container -->
+        <div id="container" class="container-fluid">
+            <div class="row">
+                <!-- lnb -->
+                @@include('./layout/lnb.html', {
+                    sub02 : '04'
+                })
+                <!-- // lnb -->
+
+                <!-- contents -->
+                <main id="main">
+                    @@include('./layout/page-title.html', {
+                        sub02 : true,
+                        page : '보험비교'
+                    })
+
+                    @@include('./modules/list-search.html', {
+                        route : true,
+                        word : true,
+                        sub02 : true
+                    })
+
+                    @@include('./modules/filter.html')
+
+                    @@include('./modules/list-table.html', {
+                        sub02type : '04',
+                        control : true,
+                        page : 'sub_02_04_edit'
+                    })
+
+                    @@include('./modules/pagination.html')
+                </main>
+                <!-- // contents -->
+            </div>
+        </div>
+        <!-- // container -->
+    </div>
+    @@include('./layout/foot.html')
+</body>
+</html>

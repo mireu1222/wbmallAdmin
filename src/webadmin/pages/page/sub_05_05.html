@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    @@include('./layout/head.html')
+</head>
+<body>
+    <div id="wrap">
+        <!-- header -->
+        @@include('./layout/header.html', {
+            sub05 : true
+        })
+        <!-- // header -->
+
+        <!-- container -->
+        <div id="container" class="container-fluid">
+            <div class="row">
+                <!-- lnb -->
+                @@include('./layout/lnb.html', {
+                    sub05 : '05'
+                })
+                <!-- // lnb -->
+
+                <!-- contents -->
+                <main id="main">
+                    @@include('./layout/page-title.html', {
+                        sub05 : true,
+                        page : '상담신청통계'
+                    })
+
+                    @@include('./modules/list-search.html', {
+                        period : true
+                    })
+
+                    @@include('./modules/list-table.html', {
+                        sub05type : '05',
+                    })
+
+                    @@include('./modules/pagination.html')
+                </main>
+                <!-- // contents -->
+            </div>
+        </div>
+        <!-- // container -->
+    </div>
+    @@include('./layout/foot.html')
+</body>
+</html>

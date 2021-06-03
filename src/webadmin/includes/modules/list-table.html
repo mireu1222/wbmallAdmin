@@ -1,0 +1,841 @@
+@@if(context.control){
+<!-- table control -->
+<div class="table-control d-flex gap-1 border-top">
+    @@if(!context.sub01type && !context.sub0704type){
+    <button type="button" class="btn btn-sm btn-outline-secondary me-auto">선택 삭제</button>
+    }
+    @@if(context.sub01type){
+    <button type="button" class="btn btn-sm btn-outline-secondary">선택 삭제</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary me-auto">선택 복사</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary">엑셀 다운로드</button>    
+    }
+    @@if(context.sub0502type || context.sub03type || context.sub0307type || context.sub02type){
+    <button type="button" class="btn btn-sm btn-outline-secondary">엑셀 다운로드</button>    
+    }
+    @@if(context.sub0704type){
+    <button type="button" class="btn btn-sm btn-outline-secondary">선택 삭제</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary">선택 메일 발송</button>   
+    <button type="button" class="btn btn-sm btn-outline-secondary me-auto">선택 SMS 발송</button>   
+    }
+    @@if(!context.eventType && !context.userType && context.sub01type !== '02' && !context.sub0502type && !context.sub03type && !context.sub0307type && !context.sub02type){
+    <a href="/webadmin@@page" class="btn btn-sm btn-outline-secondary">등록</a>
+    }
+    @@if(context.eventType){
+    <button type="button" class="btn btn-sm btn-outline-secondary">엑셀 다운로드</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary">이벤트 당첨 확정</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary">당첨 취소</button>
+    }
+    @@if(context.userType){
+    <a href="/webadmin@@page" class="btn btn-sm btn-outline-secondary">사용자 등록</a>
+    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#team-modify">부서명 수정</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#team-add">부서 등록</button>
+    }
+</div>
+<!-- // table control -->
+}
+<!-- table -->
+<table class="table table-hover align-middle text-center">
+    <thead class="table-gray">
+        @@if(context.maintype){
+        <tr>
+            <th scope="col"><input class="form-check-input chk-all" type="checkbox" id="slt-all" name="select-list" aria-label="전체선택"></th>
+            <th scope="col">번호</th>
+            <th scope="col">경로</th>
+            <th scope="col">이름</th>
+            <th scope="col">성별</th>
+            <th scope="col">생년월일</th>
+            <th scope="col">보험나이</th>
+            <th scope="col">휴대폰번호</th>
+            <th scope="col">신청시간</th>
+            <th scope="col">상담사</th>
+            <th scope="col">상태</th>
+            <th scope="col">관리</th>
+        </tr>
+        }
+        @@if(context.sub01type){
+        <tr>
+            <th scope="col"><input class="form-check-input chk-all" type="checkbox" id="slt-all" name="select-list" aria-label="전체선택"></th>
+            <th scope="col">번호</th>
+            <th scope="col">상품번호</th>
+            <th scope="col">구분</th>
+            <th scope="col">보험사</th>
+            <th scope="col">보험종류</th>
+            <th scope="col">보험타입</th>
+            <th scope="col">보험상품명</th>
+            <th scope="col">대상</th>
+            <th scope="col">등록일</th>
+            <th scope="col">상태</th>
+            <th scope="col">정보</th>
+            <th scope="col">보험료</th>
+        </tr>
+        }
+        @@if(context.sub0102type){
+        <tr>
+            <th scope="col"><input class="form-check-input chk-all" type="checkbox" id="slt-all" name="select-list" aria-label="전체선택"></th>
+            <th scope="col">번호</th>
+            <th scope="col">구분</th>
+            <th scope="col">보험타입</th>
+            <th scope="col">노출상태</th>
+            <th scope="col">관리</th>
+        </tr>
+        }
+        @@if(context.sub0103type){
+        <tr>
+            <th scope="col"><input class="form-check-input chk-all" type="checkbox" id="slt-all" name="select-list" aria-label="전체선택"></th>
+            <th scope="col">번호</th>
+            <th scope="col">구분</th>
+            <th scope="col">보험사명</th>
+            <th scope="col">로고등록</th>
+            <th scope="col">노출상태</th>
+            <th scope="col">관리</th>
+        </tr>
+        }
+        @@if(context.sub02type){
+        <tr>
+            <th scope="col"><input class="form-check-input chk-all" type="checkbox" id="slt-all" name="select-list" aria-label="전체선택"></th>
+            <th scope="col">번호</th>
+            @@if(context.sub02type !== '05' && context.sub02type !== '06'){
+            <th scope="col">경로</th>
+            }
+            @@if(context.sub02type === '03'){
+            <th scope="col">보험종류</th>
+            <th scope="col">보험타입</th>
+            }
+            <th scope="col">이름</th>
+            <th scope="col">성별</th>
+            <th scope="col">생년월일</th>
+            <th scope="col">보험나이</th>
+            <th scope="col">휴대폰번호</th>
+            @@if(context.sub02type === '01' || context.sub02type === '05' || context.sub02type === '06'){
+            <th scope="col">신청시간</th>
+            }
+            @@if(context.sub02type === '02' || context.sub02type === '03' || context.sub02type === '04'){
+            <th scope="col">인증시간</th>    
+            }
+            @@if(context.sub02type === '06'){
+            <th scope="col">직업</th>  
+            <th scope="col">문의사항</th>  
+            }
+            <th scope="col">상담사</th>
+            <th scope="col">관리</th>
+        </tr>
+        }
+        @@if(context.sub0502type){
+        <tr>
+            <th scope="col"><input class="form-check-input chk-all" type="checkbox" id="slt-all" name="select-list" aria-label="전체선택"></th>
+            <th scope="col">번호</th>
+            <th scope="col">보험종류</th>
+            <th scope="col">보험타입</th>
+            <th scope="col">이름</th>
+            <th scope="col">성별</th>
+            <th scope="col">연락처</th>
+            <th scope="col">생년월일</th>
+            <th scope="col">보험나이</th>
+            <th scope="col">인증시간</th>
+            <th scope="col">보기</th>
+        </tr>
+        }
+        @@if(context.sub03type){
+        <tr>
+            <th scope="col"><input class="form-check-input chk-all" type="checkbox" id="slt-all" name="select-list" aria-label="전체선택"></th>
+            <th scope="col">번호</th>
+            <th scope="col">경로</th>
+            <th scope="col">이름</th>
+            <th scope="col">성별</th>
+            <th scope="col">생년월일</th>
+            <th scope="col">보험나이</th>
+            <th scope="col">휴대폰번호</th>
+            <th scope="col">신청시간</th>
+            <th scope="col">상담사</th>
+            <th scope="col">상태</th>
+            <th scope="col">관리</th>
+        </tr>
+        }
+        @@if(context.sub0704type){
+        <tr>
+            <th scope="col"><input class="form-check-input chk-all" type="checkbox" id="slt-all" name="select-list" aria-label="전체선택"></th>
+            <th scope="col">번호</th>
+            <th scope="col">아이디</th>
+            <th scope="col">상담사명</th>
+            <th scope="col">등록일</th>
+            <th scope="col">최종로그인</th>
+            <th scope="col">상태</th>
+            <th scope="col">휴대폰번호</th>
+            <th scope="col">이메일</th>
+            <th scope="col">관리</th>
+        </tr>
+        }
+        @@if(context.sub0307type){
+        <tr>
+            <th scope="col"><input class="form-check-input chk-all" type="checkbox" id="slt-all" name="select-list" aria-label="전체선택"></th>
+            <th scope="col">번호</th>
+            <th scope="col">이름</th>
+            <th scope="col">성별</th>
+            <th scope="col">연락처</th>
+            <th scope="col">생년월일</th>
+            <th scope="col">보험나이</th>
+            <th scope="col">담당자</th>
+            <th scope="col">상담시간</th>
+            <th scope="col">가입보험</th>
+            <th scope="col">가입일</th>
+            <th scope="col">상태</th>
+            <th scope="col">관리</th>
+        </tr>
+        }
+        @@if(context.sub04type){
+        <tr>
+            <th scope="col"><input class="form-check-input chk-all" type="checkbox" id="slt-all" name="select-list" aria-label="전체선택"></th>
+            <th scope="col">번호</th>
+            <th scope="col">제목</th>
+            <th scope="col">설명</th>
+            <th scope="col">등록일</th>
+            <th scope="col">관리</th>
+        </tr>
+        }
+        @@if(context.sub05type){
+        <tr>
+            <th scope="col">보험종류</th>
+            <th scope="col">보험타입</th>
+            @@if(context.sub05type === '03'){
+            <th scope="col">등록보험수</th>
+            <th scope="col">노출보험수</th>
+            }
+            @@if(context.sub05type === '04'){
+            <th scope="col">검색건수</th>
+            }
+            @@if(context.sub05type === '05'){
+            <th scope="col">신청건수</th>
+            }
+            @@if(context.sub05type === '06'){
+            <th scope="col">신청건수</th>
+            }
+        </tr>
+        }
+        @@if(context.sub06type){
+        <tr>
+            <th scope="col"><input class="form-check-input chk-all" type="checkbox" id="slt-all" name="select-list" aria-label="전체선택"></th>
+            <th scope="col">번호</th>
+            @@if(context.sub06type !== '05-2'){
+                @@if(context.sub06type === '01'){
+                <th scope="col">공지기간</th>
+                }
+                <th scope="col">제목</th>
+                @@if(context.sub06type === '02' || context.sub06type === '03'){
+                <th scope="col">노출기간</th>
+                <th scope="col">노출여부</th>
+                }
+                @@if(context.sub06type === '05'){
+                <th scope="col">이벤트기간</th>
+                <th scope="col">진행상태</th>
+                }
+                <th scope="col">등록일</th>
+                @@if(context.sub06type === '04'){
+                <th scope="col">조회수</th>
+                }
+                <th scope="col">관리</th>
+            }
+            @@if(context.sub06type === '05-2'){
+            <th scope="col">성명</th>
+            <th scope="col">휴대폰</th>
+            <th scope="col">이메일</th>
+            <th scope="col">신청일</th>
+            <th scope="col">당첨여부</th>
+            }
+        </tr>
+        }
+        @@if(context.sub07type){
+        <tr>
+            <th scope="col"><input class="form-check-input chk-all" type="checkbox" id="slt-all" name="select-list" aria-label="전체선택"></th>
+            <th scope="col">번호</th>
+            <th scope="col">이메일(ID)</th>
+            <th scope="col">이름</th>
+            <th scope="col">직급</th>
+            <th scope="col">부서명</th>
+            <th scope="col">등록일</th>
+            <th scope="col">최종 로그인</th>
+            <th scope="col">상태</th>
+            <th scope="col">권한</th>
+            <th scope="col">관리</th>
+        </tr>
+        }
+    </thead>
+    <tbody>
+        @@if(context.maintype){
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list01" name="select-list" aria-label="선택"></td>
+            <td>999</td>
+            <td>웹</td>
+            <td>홍길동</td>
+            <td>남</td>
+            <td>1982.07.17</td>
+            <td>39</td>
+            <td>010-3111-2111</td>
+            <td>2021.05.01 16:00</td>
+            <td>김상담</td>
+            <td><span class="badge bg-warning text-dark">부재</span></td><!-- 부재일 때 .bg-warning.text-dark -->
+            <td><a href="#n" class="btn btn-sm btn-outline-primary">관리</a></td>
+        </tr>
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list02" name="select-list" aria-label="선택"></td>
+            <td>999</td>
+            <td>모바일</td>
+            <td>홍길동</td>
+            <td>남</td>
+            <td>1982.07.17</td>
+            <td>39</td>
+            <td>010-3111-2111</td>
+            <td>2021.05.01 16:00</td>
+            <td>김상담</td>
+            <td><span class="badge bg-danger">거절</span></td><!-- 거절일 때 .bg-danger -->
+            <td><a href="#n" class="btn btn-sm btn-outline-primary">관리</a></td>
+        </tr>
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list03" name="select-list" aria-label="선택"></td>
+            <td>999</td>
+            <td>웹</td>
+            <td>홍길동</td>
+            <td>남</td>
+            <td>1982.07.17</td>
+            <td>39</td>
+            <td>010-3111-2111</td>
+            <td>2021.05.01 16:00</td>
+            <td>김상담</td>
+            <td><span class="badge bg-primary">상담</span></td><!-- 상담일 때 .bg-primary -->
+            <td><a href="#n" class="btn btn-sm btn-outline-primary">관리</a></td>
+        </tr>
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list04" name="select-list" aria-label="선택"></td>
+            <td>999</td>
+            <td>모바일</td>
+            <td>홍길동</td>
+            <td>남</td>
+            <td>1982.07.17</td>
+            <td>39</td>
+            <td>010-3111-2111</td>
+            <td>2021.05.01 16:00</td>
+            <td>김상담</td>
+            <td><span class="badge bg-success">계약</span></td><!-- 계약일 때 .bg-success -->
+            <td><a href="#n" class="btn btn-sm btn-outline-primary">관리</a></td>
+        </tr>
+        }
+        @@if(context.sub01type){
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list01" name="select-list" aria-label="선택"></td>
+            <td>99</td>
+            <td>101011001</td>
+            <td>손해보험사</td>
+            <td>KB손해보험</td>
+            <td>암보험</td>
+            <td>비갱신보험</td>
+            <td>보험상품명</td>
+            <td>남자</td>
+            <td>2021.03.31</td>
+            <td>정상</td>
+            <td><a href="/webadmin/page/sub_01_01_edit.html" class="btn btn-sm btn-outline-primary">관리</a></td>
+            <td><a href="/webadmin/page/sub_01_01_fee.html" class="btn btn-sm btn-outline-primary">관리</a></td>
+        </tr>
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list02" name="select-list" aria-label="선택"></td>
+            <td>98</td>
+            <td>101011001</td>
+            <td>손해보험사</td>
+            <td>KB손해보험</td>
+            <td>암보험</td>
+            <td>비갱신보험</td>
+            <td>보험상품명</td>
+            <td>남자</td>
+            <td>2021.03.31</td>
+            <td>정상</td>
+            <td><a href="/webadmin/page/sub_01_01_edit.html" class="btn btn-sm btn-outline-primary">관리</a></td>
+            <td><a href="/webadmin/page/sub_01_01_fee.html" class="btn btn-sm btn-outline-primary">관리</a></td>
+        </tr>
+        }
+        @@if(context.sub0102type){
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list01" name="select-list" aria-label="선택"></td>
+            <td>999</td>
+            <td>암보험</td>
+            <td>비갱신형 암보험</td>
+            <td>노출</td>
+            <td>
+                <div class="d-inline-flex gap-1">
+                    <button type="button" class="btn btn-sm btn-outline-danger">삭제</button>
+                    <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modify-modal">수정</button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list02" name="select-list" aria-label="선택"></td>
+            <td>999</td>
+            <td>암보험</td>
+            <td>갱신형 암보험</td>
+            <td>노출안함</td>
+            <td>
+                <div class="d-inline-flex gap-1">
+                    <button type="button" class="btn btn-sm btn-outline-danger">삭제</button>
+                    <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modify-modal">수정</button>
+                </div>
+            </td>
+        </tr>
+        }
+        @@if(context.sub0103type){
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list01" name="select-list" aria-label="선택"></td>
+            <td>999</td>
+            <td>손해보험사</td>
+            <td>KB손해보험</td>
+            <td><i class="bi bi-image"></i></td>
+            <td>노출</td>
+            <td>
+                <div class="d-inline-flex gap-1">
+                    <button type="button" class="btn btn-sm btn-outline-danger">삭제</button>
+                    <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modify-modal">수정</button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list02" name="select-list" aria-label="선택"></td>
+            <td>999</td>
+            <td>손해보험사</td>
+            <td>KB손해보험</td>
+            <td></td>
+            <td>노출</td>
+            <td>
+                <div class="d-inline-flex gap-1">
+                    <button type="button" class="btn btn-sm btn-outline-danger">삭제</button>
+                    <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modify-modal">수정</button>
+                </div>
+            </td>
+        </tr>
+        }
+        @@if(context.sub02type){
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list01" name="select-list" aria-label="선택"></td>
+            <td>999</td>
+            @@if(context.sub02type !== '05' && context.sub02type !== '06'){
+            <td>웹</td>
+            }
+            @@if(context.sub02type === '03'){
+            <td>암보험</td>
+            <td>갱신형</td>
+            }
+            <td>권선생</td>
+            <td>남</td>
+            <td>1982.07.17</td>
+            <td>39</td>
+            <td>010-0000-0000</td>
+            <td>2021.05.01 16:00</td>
+            @@if(context.sub02type === '06'){
+            <td>사무직</td>
+            <td>상품에 대한 자세한 문의</td>
+            }
+            <td>김상담</td>
+            <td><a href="/webadmin/page/@@page.html" class="btn btn-sm btn-outline-primary">관리</a></td>
+        </tr>
+        }
+        @@if(context.sub0502type){
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list01" name="select-list" aria-label="선택"></td>
+            <td>99</td>
+            <td>암보험</td>
+            <td>비갱신보험</td>
+            <td>백사장</td>
+            <td>남</td>
+            <td>010-3111-2111</td>
+            <td>1982.01.01</td>
+            <td>39</td>
+            <td>2021.05.01 16:00</td>
+            <td><a href="@@page" class="btn btn-sm btn-outline-primary">보기</a></td>
+        </tr>
+        }
+        @@if(context.sub03type){
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list01" name="select-list" aria-label="선택"></td>
+            <td>99</td>
+            <td>웹</td>
+            <td>권선생</td>
+            <td>남</td>
+            <td>1982.07.17</td>
+            <td>39</td>
+            <td>010-0000-0000</td>
+            <td>2021.05.01 16:00</td>
+            <td>김상담</td>
+            @@if(context.sub03type === '01'){
+            <td><span class="badge bg-warning text-dark">부재</span></td>
+            }
+            @@if(context.sub03type === '02'){
+            <td><span class="badge bg-primary">상담</span></td>
+            }
+            @@if(context.sub03type === '03'){
+            <td><span class="badge bg-success">계약</span></td>
+            }
+            <td><a href="/webadmin/page/@@page.html" class="btn btn-sm btn-outline-primary">관리</a></td>
+        </tr>
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list02" name="select-list" aria-label="선택"></td>
+            <td>99</td>
+            <td>웹</td>
+            <td>권선생</td>
+            <td>남</td>
+            <td>1982.07.17</td>
+            <td>39</td>
+            <td>010-0000-0000</td>
+            <td>2021.05.01 16:00</td>
+            <td>김상담</td>
+            @@if(context.sub03type === '01'){
+            <td><span class="badge bg-danger">거절</span></td>
+            }
+            @@if(context.sub03type === '02'){
+            <td><span class="badge bg-primary">상담</span></td>
+            }
+            @@if(context.sub03type === '03'){
+            <td><span class="badge bg-success">계약</span></td>
+            }
+            <td><a href="/webadmin/page/@@page.html" class="btn btn-sm btn-outline-primary">관리</a></td>
+        </tr>
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list03" name="select-list" aria-label="선택"></td>
+            <td>99</td>
+            <td>웹</td>
+            <td>권선생</td>
+            <td>남</td>
+            <td>1982.07.17</td>
+            <td>39</td>
+            <td>010-0000-0000</td>
+            <td>2021.05.01 16:00</td>
+            <td>김상담</td>
+            @@if(context.sub03type === '01'){
+            <td><span class="badge bg-primary">상담</span></td>
+            }
+            @@if(context.sub03type === '02'){
+            <td><span class="badge bg-primary">상담</span></td>
+            }
+            @@if(context.sub03type === '03'){
+            <td><span class="badge bg-success">계약</span></td>
+            }
+            <td><a href="/webadmin/page/@@page.html" class="btn btn-sm btn-outline-primary">관리</a></td>
+        </tr>
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list04" name="select-list" aria-label="선택"></td>
+            <td>99</td>
+            <td>웹</td>
+            <td>권선생</td>
+            <td>남</td>
+            <td>1982.07.17</td>
+            <td>39</td>
+            <td>010-0000-0000</td>
+            <td>2021.05.01 16:00</td>
+            <td>김상담</td>
+            @@if(context.sub03type === '01'){
+            <td><span class="badge bg-success">계약</span></td>
+            }
+            @@if(context.sub03type === '02'){
+            <td><span class="badge bg-primary">상담</span></td>
+            }
+            @@if(context.sub03type === '03'){
+            <td><span class="badge bg-success">계약</span></td>
+            }
+            <td><a href="/webadmin/page/@@page.html" class="btn btn-sm btn-outline-primary">관리</a></td>
+        </tr>
+        }
+        @@if(context.sub0704type){
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list01" name="select-list" aria-label="선택"></td>
+            <td>99</td>
+            <td>abcd1111</td>
+            <td>상담사</td>
+            <td>2020.06.01</td>
+            <td>2020.06.01 10:00:00</td>
+            <td>정상</td>
+            <td>010-0000-0000</td>
+            <td>abcd1111@naver.com</td>
+            <td>
+                <div class="d-inline-flex gap-1">
+                    <a href="/webadmin/page/sub_07_04_edit.html" class="btn btn-sm btn-outline-primary">수정</a>
+                    <button type="button" class="btn btn-sm btn-outline-danger">삭제</button>
+                </div>
+            </td>
+        </tr>   
+        }
+        @@if(context.sub0307type){
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list01" name="select-list" aria-label="선택"></td>
+            <td>99</td>
+            <td>백사장</td>
+            <td>남</td>
+            <td>010-0000-0000</td>
+            <td>1982.07.17</td>
+            <td>39</td>
+            <td>홍길동</td>
+            <td>2021.05.01 16:00:00</td>
+            <td></td>
+            <td>2021.05.01</td>
+            <td><span class="badge bg-secondary">조회</span></td>
+            <td>
+                <button type="button" class="btn btn-sm btn-outline-primary">관리</button>
+            </td>
+        </tr>
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list01" name="select-list" aria-label="선택"></td>
+            <td>99</td>
+            <td>백사장</td>
+            <td>남</td>
+            <td>010-0000-0000</td>
+            <td>1982.07.17</td>
+            <td>39</td>
+            <td>홍길동</td>
+            <td>2021.05.01 16:00:00</td>
+            <td></td>
+            <td>2021.05.01</td>
+            <td><span class="badge bg-primary">상담</span></td>
+            <td>
+                <button type="button" class="btn btn-sm btn-outline-primary">관리</button>
+            </td>
+        </tr>
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list01" name="select-list" aria-label="선택"></td>
+            <td>99</td>
+            <td>백사장</td>
+            <td>남</td>
+            <td>010-0000-0000</td>
+            <td>1982.07.17</td>
+            <td>39</td>
+            <td>홍길동</td>
+            <td>2021.05.01 16:00:00</td>
+            <td></td>
+            <td>2021.05.01</td>
+            <td><span class="badge bg-success">가입</span></td>
+            <td>
+                <button type="button" class="btn btn-sm btn-outline-primary">관리</button>
+            </td>
+        </tr>
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list01" name="select-list" aria-label="선택"></td>
+            <td>99</td>
+            <td>백사장</td>
+            <td>남</td>
+            <td>010-0000-0000</td>
+            <td>1982.07.17</td>
+            <td>39</td>
+            <td>홍길동</td>
+            <td>2021.05.01 16:00:00</td>
+            <td></td>
+            <td>2021.05.01</td>
+            <td><span class="badge bg-warning text-dark">부재</span></td>
+            <td>
+                <button type="button" class="btn btn-sm btn-outline-primary">관리</button>
+            </td>
+        </tr>
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list01" name="select-list" aria-label="선택"></td>
+            <td>99</td>
+            <td>백사장</td>
+            <td>남</td>
+            <td>010-0000-0000</td>
+            <td>1982.07.17</td>
+            <td>39</td>
+            <td>홍길동</td>
+            <td>2021.05.01 16:00:00</td>
+            <td></td>
+            <td>2021.05.01</td>
+            <td><span class="badge bg-danger">거절</span></td>
+            <td>
+                <button type="button" class="btn btn-sm btn-outline-primary">관리</button>
+            </td>
+        </tr>      
+        }
+        @@if(context.sub04type){
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list01" name="select-list" aria-label="선택"></td>
+            <td>99</td>
+            <td>무해지환급형</td>
+            <td>보험료는 줄이고, 보장은 그대로 보험에 가입하자!</td>
+            <td>2021-03-23</td>
+            <td>
+                <div class="d-inline-flex gap-1">
+                    <button type="button" class="btn btn-sm btn-outline-primary">수정</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger">삭제</button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list02" name="select-list"aria-label="선택"></td>
+            <td>98</td>
+            <td>무해지환급형</td>
+            <td>보험료는 줄이고, 보장은 그대로 보험에 가입하자!</td>
+            <td>2021-03-23</td>
+            <td>
+                <div class="d-inline-flex gap-1">
+                    <button type="button" class="btn btn-sm btn-outline-primary">수정</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger">삭제</button>
+                </div>
+            </td>
+        </tr>
+        }
+        @@if(context.sub05type){
+        <tr>
+            <td>암보험</td>
+            <td>
+                <div class="d-flex gap-2 justify-content-center">
+                    <p>비갱신형보험(<strong class="count">11</strong>개)</p>
+                    <p>갱신형보험(<strong class="count">12</strong>개)</p>
+                </div>
+            </td>
+            <td><strong class="count">23</strong>개</td>
+            @@if(context.sub05type === '03'){
+            <td><strong class="count">19</strong>개</td>
+            }
+        </tr>
+        }
+        @@if(context.sub06type && context.sub06type !== '05-2'){
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list01" name="select-list"aria-label="선택"></td>
+            <td>99</td>
+            @@if(context.sub06type === '01'){
+            <td>2021.01.01 ~ 2021.02.01</td>
+            }
+            <td>제목이 들어갑니다. 제목이 들어갑니다.</td>
+            @@if(context.sub06type === '02' || context.sub06type === '03'){
+            <td>2021.01.01 ~ 2021.02.01</td>
+            <td>Y</td>
+            }
+            @@if(context.sub06type === '05'){
+            <td>2021.03.01 ~ 2021.04.01</td>
+            <td>진행중</td>
+            }
+            <td>2021.04.01</td>
+            @@if(context.sub06type === '04'){
+            <td>4</td>
+            }
+            <td>
+                <div class="d-inline-flex gap-1">
+                    <button type="button" class="btn btn-sm btn-outline-primary">수정</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger">삭제</button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list01" name="select-list"aria-label="선택"></td>
+            <td>99</td>
+            @@if(context.sub06type === '01'){
+            <td>2021.01.01 ~ 2021.02.01</td>
+            }
+            <td>제목이 들어갑니다. 제목이 들어갑니다.</td>
+            @@if(context.sub06type === '02' || context.sub06type === '03'){
+            <td>2021.01.01 ~ 2021.02.01</td>
+            <td>N</td>
+            }
+            @@if(context.sub06type === '05'){
+            <td>2021.03.01 ~ 2021.04.01</td>
+            <td>마감</td>
+            }
+            <td>2021.04.01</td>
+            @@if(context.sub06type === '04'){
+            <td>4</td>
+            }
+            <td>
+                <div class="d-inline-flex gap-1">
+                    <button type="button" class="btn btn-sm btn-outline-primary">수정</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger">삭제</button>
+                </div>
+            </td>
+        </tr>
+        }
+        @@if(context.sub06type === '05-2') {
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list01" name="select-list"aria-label="선택"></td>
+            <td>99</td>
+            <td>홍길동</td>
+            <td>010-1111-1111</td>
+            <td>email@email.com</td>
+            <td>2021.02.01</td>
+            <td><span class="badge bg-primary">당첨</span></td>
+        </tr>
+        }
+        @@if(context.sub07type){
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list01" name="select-list"aria-label="선택"></td>
+            <td>999</td>
+            <td>aaa@mail.com</td>
+            <td>홍길동</td>
+            <td>팀장</td>
+            <td>고객지원팀</td>
+            <td>2020.08.10 10:00</td>
+            <td>2020.08.10 10:11</td>
+            <td>정상</td>
+            <td>마스터(전체)</td>
+            <td>
+                <div class="d-inline-flex gap-1">
+                    <a href="/webadmin/page/sub_07_01_modify.html" class="btn btn-sm btn-outline-primary">수정</a>
+                    <button type="button" class="btn btn-sm btn-outline-danger" disabled>삭제</button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><input class="form-check-input" type="checkbox" id="slt-list02" name="select-list"aria-label="선택"></td>
+            <td>999</td>
+            <td>aaa@mail.com</td>
+            <td>홍길동</td>
+            <td>팀장</td>
+            <td>고객지원팀</td>
+            <td>2020.08.10 10:00</td>
+            <td>2020.08.10 10:11</td>
+            <td>정상</td>
+            <td>3가지 메뉴</td>
+            <td>
+                <div class="d-inline-flex gap-1">
+                    <button type="button" class="btn btn-sm btn-outline-primary">수정</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger">삭제</button>
+                </div>
+            </td>
+        </tr>
+        }
+    </tbody>
+    @@if(context.sub05type){
+    <tfoot class="table-light">
+        <tr>
+            <th colspan="2">총합계</th>
+            <td><strong class="count">999</strong>개</td>
+            @@if(context.sub05type === '03'){
+            <td><strong class="count">999</strong>개</td>
+            }
+        </tr>
+    </tfoot>
+    }
+</table>
+<!-- // table -->
+@@if(context.control){
+<!-- table control -->
+<div class="table-control d-flex gap-1 border-bottom">
+    @@if(!context.sub01type && !context.sub0704type){
+    <button type="button" class="btn btn-sm btn-outline-secondary me-auto">선택 삭제</button>
+    }
+    @@if(context.sub01type){
+    <button type="button" class="btn btn-sm btn-outline-secondary">선택 삭제</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary me-auto">선택 복사</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary">엑셀 다운로드</button>    
+    }
+    @@if(context.sub0502type || context.sub03type || context.sub0307type || context.sub02type){
+    <button type="button" class="btn btn-sm btn-outline-secondary">엑셀 다운로드</button>    
+    }
+    @@if(context.sub0704type){
+    <button type="button" class="btn btn-sm btn-outline-secondary">선택 삭제</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary">선택 메일 발송</button>   
+    <button type="button" class="btn btn-sm btn-outline-secondary me-auto">선택 SMS 발송</button>   
+    }
+    @@if(!context.eventType && !context.userType && context.sub01type !== '02' && !context.sub0502type && !context.sub03type && !context.sub0307type && !context.sub02type){
+    <a href="/webadmin@@page" class="btn btn-sm btn-outline-secondary">등록</a>
+    }
+    @@if(context.eventType){
+    <button type="button" class="btn btn-sm btn-outline-secondary">엑셀 다운로드</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary">이벤트 당첨 확정</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary">당첨 취소</button>
+    }
+    @@if(context.userType){
+    <a href="/webadmin@@page" class="btn btn-sm btn-outline-secondary">사용자 등록</a>
+    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#team-modify">부서명 수정</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#team-add">부서 등록</button>
+    }
+</div>
+<!-- // table control -->
+}

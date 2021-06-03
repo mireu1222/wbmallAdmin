@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    @@include('./layout/head.html')
+</head>
+<body>
+    <div id="wrap">
+        <!-- header -->
+        @@include('./layout/header.html')
+        <!-- // header -->
+
+        <!-- container -->
+        <div id="container" class="container-fluid">
+            <div class="row">
+                <!-- contents -->
+                <main id="main" class="index-type">
+                    @@include('./layout/page-title.html', {
+                        page : '대시보드'
+                    })
+
+                    <h3 class="page-title"><i class="bi bi-list-stars"></i>이번주(21.04.19 ~ 21.04.25) 상담고객 내역</h3>
+
+                    @@include('./modules/filter.html', {
+                        main: true
+                    })
+
+                    @@include('./modules/list-table.html', {
+                        maintype : true
+                    })
+                </main>
+                <!-- // contents -->
+            </div>
+        </div>
+        <!-- // container -->
+
+        <!-- footer -->
+        @@include('./layout/footer.html')
+        <!-- // footer -->
+    </div>
+    @@include('./layout/foot.html')
+</body>
+</html>

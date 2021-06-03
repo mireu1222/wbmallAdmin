@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    @@include('./layout/head.html')
+</head>
+<body>
+    <div id="wrap">
+        <!-- header -->
+        @@include('./layout/header.html', {
+            sub07 : true
+        })
+        <!-- // header -->
+
+        <!-- container -->
+        <div id="container" class="container-fluid">
+            <div class="row">
+                <!-- lnb -->
+                @@include('./layout/lnb.html', {
+                    sub07 : '01'
+                })
+                <!-- // lnb -->
+
+                <!-- contents -->
+                <main id="main">
+                    @@include('./layout/page-title.html', {
+                        sub07 : true,
+                        page : '내부사용자'
+                    })
+
+                    @@include('./modules/list-search.html', {
+                        setting : true,
+                        options : [
+                            '등록일', '공지기간'
+                        ],
+                        word : true
+                    })
+
+                    @@include('./modules/filter.html')
+
+                    @@include('./modules/list-table.html', {
+                        sub07type : '01',
+                        control : true,
+                        userType : true,
+                        page : '/page/sub_07_01_write.html'
+                    })
+
+                    @@include('./modules/pagination.html')
+                </main>
+                <!-- // contents -->
+            </div>
+        </div>
+        <!-- // container -->
+    </div>
+
+    <!-- modal -->
+    <article id="team-add" class="modal fade" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="modal-title">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="modal-title" class="modal-title">부서 등록</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="닫기"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control form-control-sm" placeholder="추가할 부서명 입력">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">취소</button>
+                    <button type="button" class="btn btn-sm btn-primary">등록</button>
+                </div>
+            </div>
+        </div>
+    </article>
+    <article id="team-modify" class="modal fade" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="modal-title">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="modal-title" class="modal-title">부서명 수정</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="닫기"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table row-table">
+                        <colgroup>
+                            <col style="width:40%">
+                            <col>
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th scope="row"><label for="slt-team">부서 선택</label></th>
+                                <td>
+                                    <select id="slt-team" class="form-select form-select-sm">
+                                        <option value="">변경할 부서선택</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><label for="ipt-modify">변경할 부서명</label></th>
+                                <td>
+                                    <input type="text" id="ipt-modify" class="form-control form-control-sm" placeholder="변경할 부서명을 입력해주시기 바랍니다.">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">취소</button>
+                    <button type="button" class="btn btn-sm btn-primary">수정</button>
+                </div>
+            </div>
+        </div>
+    </article>
+    <!-- // modal -->
+    @@include('./layout/foot.html')
+</body>
+</html>

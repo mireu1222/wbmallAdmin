@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    @@include('./layout/head.html')
+</head>
+<body>
+    <div id="wrap">
+        <!-- header -->
+        @@include('./layout/header.html', {
+            sub01 : true
+        })
+        <!-- // header -->
+
+        <!-- container -->
+        <div id="container" class="container-fluid">
+            <div class="row">
+                <!-- lnb -->
+                @@include('./layout/lnb.html', {
+                    sub01 : '01'
+                })
+                <!-- // lnb -->
+
+                <!-- contents -->
+                <main id="main">
+                    @@include('./layout/page-title.html', {
+                        sub01 : true,
+                        page : '보험상품관리'
+                    })
+
+                    @@include('./modules/list-search.html', {
+                        rowspan : 'col6',
+                        sub01 : true
+                    })
+
+                    @@include('./modules/filter.html')
+
+                    @@include('./modules/list-table.html', {
+                        sub01type : true,
+                        control : true,
+                        page : '/page/sub_01_01_edit.html'
+                    })
+
+                    @@include('./modules/pagination.html')
+                </main>
+                <!-- // contents -->
+            </div>
+        </div>
+        <!-- // container -->
+    </div>
+    @@include('./layout/foot.html')
+</body>
+</html>

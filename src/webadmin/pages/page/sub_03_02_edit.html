@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    @@include('./layout/head.html')
+</head>
+<body>
+    <div id="wrap">
+        <!-- header -->
+        @@include('./layout/header.html', {
+            sub03 : true
+        })
+        <!-- // header -->
+
+        <!-- container -->
+        <div id="container" class="container-fluid">
+            <div class="row">
+                <!-- lnb -->
+                @@include('./layout/lnb.html', {
+                    sub03 : '02'
+                })
+                <!-- // lnb -->
+
+                <!-- contents -->
+                <main id="main">
+                    @@include('./layout/page-title.html', {
+                        sub03 : true,
+                        page : '가망고객관리'
+                    })
+
+                    <div class="form-wrap">
+                        <section>
+                            <h3 class="tbl-title"><i class="bi bi-pencil-square"></i>상담 정보</h3>
+                            <table class="table row-table">
+                                <colgroup>
+                                    <col style="width:20%">
+                                    <col>
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">상담경로</th>
+                                        <td class="align-middle"><strong class="text-primary">무료상담신청</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">이름</th>
+                                        <td class="align-middle">권선생</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">성별</th>
+                                        <td class="align-middle">남</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">생년월일</th>
+                                        <td class="align-middle">
+                                            <div class="d-flex gap-2">
+                                                <p>1982.01.01</p>
+                                                <p>(보험나이 <strong class="text-primary">40</strong>세)</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">휴대폰번호</th>
+                                        <td class="align-middle">010-0000-0000</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">최근 상담등록</th>
+                                        <td class="align-middle">2021.04.15 11:00</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">관심보험</th>
+                                        <td class="align-middle">MG손해보험 : (무)건강명의4대질병진단보험(20.04)(암중점형)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                        <section>
+                            <h3 class="tbl-title"><i class="bi bi-pencil-square"></i>상담사 변경</h3>
+                            <table class="table row-table">
+                                <colgroup>
+                                    <col style="width:20%">
+                                    <col>
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">상담사</th>
+                                        <td>
+                                            <div class="d-flex gap-1">
+                                                <input type="text" class="form-control form-control-sm w-25" value="김상담설계사">
+                                                <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#counselor-search">찾기</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                        <div class="btn-wrap d-flex justify-content-end mt-3 gap-1">
+                            <button type="submit" class="btn btn-sm btn-primary submit">저장</button>
+                            <a href="/webadmin/page/sub_03_03.html" class="btn btn-sm btn-secondary submit">취소</a>
+                        </div>
+                    </div>
+                    <div class="form-wrap partition">
+                        <!-- 내역추가 loop -->
+                        <section>
+                            <div class="d-flex align-items-center mb-2 gap-1">
+                                <h3 class="tbl-title pb-0"><i class="bi bi-pencil-square"></i>상담 진행 내역</h3>
+                                <button type="button" class="btn btn-sm btn-outline-primary ms-auto">수정</button>
+                                <button type="button" class="btn btn-sm btn-outline-danger">삭제</button>
+                            </div>
+                            <table class="table row-table">
+                                <colgroup>
+                                    <col style="width:20%">
+                                    <col>
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">제목</th>
+                                        <td class="align-middle">암보험 상담 40세</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">작성자</th>
+                                        <td class="align-middle">김상담</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">등록일</th>
+                                        <td class="align-middle">2021.05.01</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">관심 보험</th>
+                                        <td class="align-middle">암보험 비갱신형</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">내용</th>
+                                        <td class="align-middle">
+                                            오전 10시 통화하여 보험 상담<br>
+                                            암보험에 관심많으며, 현재 40대로 가장이며, 태양산업의 부장으로 근무중<br>
+                                            현재 보험료로 월 100만원 지출 중.<br><br>
+                                            추가 상담하기로 함.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">상태</th>
+                                        <td class="align-middle">
+                                            <span class="badge bg-warning text-dark">부재</span>
+                                            <!-- <span class="badge bg-danger">거절</span>
+                                            <span class="badge bg-success">계약</span> -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">첨부파일</th>
+                                        <td class="align-middle"><a href="#n" class="link-primary fw-bold"><i class="bi bi-download me-1"></i>김상담님암보험설계서.pdf</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                        <!-- // 내역추가 loop -->
+                        <!-- 내역추가 loop -->
+                        <section>
+                            <div class="d-flex align-items-center mb-2 gap-1">
+                                <h3 class="tbl-title pb-0"><i class="bi bi-pencil-square"></i>상담 진행 내역</h3>
+                                <button type="button" class="btn btn-sm btn-outline-primary ms-auto">저장</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">취소</button>
+                            </div>
+                            <table class="table row-table">
+                                <colgroup>
+                                    <col style="width:20%">
+                                    <col>
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">제목</th>
+                                        <td class="align-middle">
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">작성자</th>
+                                        <td class="align-middle">김상담</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">등록일</th>
+                                        <td class="align-middle">2021.05.01</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">관심 보험</th>
+                                        <td class="align-middle">
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">내용</th>
+                                        <td class="align-middle">
+                                            <textarea class="form-control form-control-sm"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">상태</th>
+                                        <td class="align-middle">
+                                            <div class="d-flex gap-4">
+                                                <div class="form-check mb-0">
+                                                    <input class="form-check-input" type="radio" name="rdo" id="rdo01" value="" checked>
+                                                    <label class="form-check-label" for="rdo01">부재</label>
+                                                </div>
+                                                <div class="form-check mb-0">
+                                                    <input class="form-check-input" type="radio" name="rdo" id="rdo02" value="">
+                                                    <label class="form-check-label" for="rdo02">거절</label>
+                                                </div>
+                                                <div class="form-check mb-0">
+                                                    <input class="form-check-input" type="radio" name="rdo" id="rdo03" value="">
+                                                    <label class="form-check-label" for="rdo03">계약</label>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">첨부파일</th>
+                                        <td class="align-middle">
+                                            <input class="form-control form-control-sm" type="file" id="file-upload">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                        <!-- // 내역추가 loop -->
+                        <div class="btn-wrap d-flex justify-content-end mt-3 gap-1">
+                            <button type="submit" class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus-circle me-1"></i>상담 진행 내역 추가</button>
+                        </div>
+                    </div>
+                    <div class="btn-wrap d-flex justify-content-end mt-5 pt-3 gap-1 border-top">
+                        <a href="/webadmin/page/sub_03_02.html" class="btn btn-sm btn-secondary submit">목록</a>
+                    </div>
+                </main>
+                <!-- // contents -->
+            </div>
+        </div>
+        <!-- // container -->
+    </div>
+
+    <!-- modal -->
+    <article id="counselor-search" class="modal big fade" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="modal-title">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="modal-title" class="modal-title">상담사 목록</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="닫기"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex gap-1">
+                        <input type="text" class="form-control form-control-sm" placeholder="상담사 이름을 입력하세요.">
+                        <button type="button" class="btn btn-sm btn-dark">검색</button>
+                    </div>
+                    <table class="table table-hover align-middle text-center mt-4">
+                        <thead class="table-gray">
+                            <tr>
+                                <th scope="col">부서</th>
+                                <th scope="col">이름</th>
+                                <th scope="col">소속</th>
+                                <th scope="col">직급</th>
+                                <th scope="col">휴대폰번호</th>
+                                <th scope="col">적용</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>고객상담팀</td>
+                                <td>김상담</td>
+                                <td>경인사업부</td>
+                                <td>팀장</td>
+                                <td>010-0000-0000</td>
+                                <td><button type="button" class="btn btn-sm btn-outline-primary">적용</button></td>
+                            </tr>
+                            <tr>
+                                <td>고객상담팀</td>
+                                <td>김상담</td>
+                                <td>경인사업부</td>
+                                <td>팀장</td>
+                                <td>010-0000-0000</td>
+                                <td><button type="button" class="btn btn-sm btn-outline-primary">적용</button></td>
+                            </tr>
+                            <tr>
+                                <td>고객상담팀</td>
+                                <td>김상담</td>
+                                <td>경인사업부</td>
+                                <td>팀장</td>
+                                <td>010-0000-0000</td>
+                                <td><button type="button" class="btn btn-sm btn-outline-primary">적용</button></td>
+                            </tr>
+                            <tr>
+                                <td>고객상담팀</td>
+                                <td>김상담</td>
+                                <td>경인사업부</td>
+                                <td>팀장</td>
+                                <td>010-0000-0000</td>
+                                <td><button type="button" class="btn btn-sm btn-outline-primary">적용</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </article>
+    <!-- // modal -->
+    @@include('./layout/foot.html')
+</body>
+</html>

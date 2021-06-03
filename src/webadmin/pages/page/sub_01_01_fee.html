@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    @@include('./layout/head.html')
+</head>
+<body>
+    <div id="wrap">
+        <!-- header -->
+        @@include('./layout/header.html', {
+            sub01 : true
+        })
+        <!-- // header -->
+
+        <!-- container -->
+        <div id="container" class="container-fluid">
+            <div class="row">
+                <!-- lnb -->
+                @@include('./layout/lnb.html', {
+                    sub01 : '01'
+                })
+                <!-- // lnb -->
+
+                <!-- contents -->
+                <main id="main">
+                    @@include('./layout/page-title.html', {
+                        sub01 : 'sub',
+                        page : '보험료관리'
+                    })
+
+                    <div class="form-wrap">
+                        <!-- 보험 기본 정보 -->
+                        <section>
+                            <div class="d-flex align-items-center mb-2">
+                                <h3 class="tbl-title pb-0"><i class="bi bi-pencil-square"></i>보험 기본 정보</h3>
+                                <button type="button" class="btn btn-sm btn-outline-primary ms-auto">보험정보 수정</button>
+                            </div>
+                            <table class="table row-table">
+                                <colgroup>
+                                    <col style="width:20%">
+                                    <col>
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">구분</th>
+                                        <td class="align-middle">손해보험사</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">보험사</th>
+                                        <td class="align-middle">KB손해보험</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">보험종류</th>
+                                        <td class="align-middle">암보험</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">보험타입</th>
+                                        <td class="align-middle">비갱신보험</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">보험상품명</th>
+                                        <td class="align-middle">(무)행복을다주는가족사랑종합보험</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">납입기간</th>
+                                        <td class="align-middle">20년납</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">보험기간</th>
+                                        <td class="align-middle">90세 만기</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">성별</th>
+                                        <td class="align-middle">남자</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">가입유형</th>
+                                        <td class="align-middle">만기일부환급형, 순수보장형(적립보험료 없을시)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                        <!-- // 보험 기본 정보 -->
+
+                        <!-- 보험료 기준 -->
+                        <section>
+                            <div class="d-flex align-items-center mb-2">
+                                <h3 class="tbl-title pb-0"><i class="bi bi-pencil-square"></i>보험료 기준</h3>
+                                <button type="button" class="btn btn-sm btn-outline-primary ms-auto">보험정보 수정</button>
+                            </div>
+                            <div>
+                                <input type="text" class="form-control form-control-sm mb-2" value="기준 : ">
+                            </div>
+                            <table class="table col-table align-middle text-center">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th scope="col">구분</th>
+                                        <th scope="col" colspan="2">담보명</th>
+                                        <th scope="col">보험기간</th>
+                                        <th scope="col">납입기간</th>
+                                        <th scope="col">영업금액</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>기본계약</td>
+                                        <td>01</td>
+                                        <td>일반상해후휴장해*80%이상</td>
+                                        <td>90세만기</td>
+                                        <td>20년납</td>
+                                        <td>2억원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>기본계약</td>
+                                        <td>02</td>
+                                        <td>일반상해후휴장해*80%이상</td>
+                                        <td>90세만기</td>
+                                        <td>20년납</td>
+                                        <td>2억원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>기본계약</td>
+                                        <td>03</td>
+                                        <td>일반상해후휴장해*80%이상</td>
+                                        <td>90세만기</td>
+                                        <td>20년납</td>
+                                        <td>2억원</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                        <!-- // 보험료 기준 -->
+
+                        <!-- 월 납입보험료 -->
+                        <section>
+                            <div class="d-flex align-items-center">
+                                <h3 class="tbl-title"><i class="bi bi-pencil-square"></i>월 납입보험료</h3>
+                                <div class="d-flex align-items-center justify-content-end mb-2 ms-auto w-75">
+                                    <div class="d-flex align-items-center gap-1 w-25">
+                                        <label for="slt01" class="w-50">시작생년</label>
+                                        <select id="slt01" class="form-select form-select-sm">
+                                            <option value="">2006</option>
+                                        </select>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-1 w-25 ms-3">
+                                        <label for="slt02" class="w-50">종료생년</label>
+                                        <select id="slt02" class="form-select form-select-sm">
+                                            <option value="">1971</option>
+                                        </select>
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-outline-primary ms-1">적용</button>
+                                </div>
+                            </div>
+                            <table class="table col-table align-middle text-center">
+                                <colgroup>
+                                    <col>
+                                    <col>
+                                    <col style="width:20%">
+                                    <col style="width:12%">
+                                    <col style="width:12%">
+                                    <col style="width:12%">
+                                </colgroup>
+                                <thead class="table-light">
+                                    <tr>
+                                        <th scope="col" rowspan="2" class="align-middle">생년</th>
+                                        <th scope="col" rowspan="2" class="align-middle">보험나이</th>
+                                        <th scope="col" rowspan="2" class="align-middle">월 납입료</th>
+                                        <th scope="col" colspan="4">담보</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">01</th>
+                                        <th scope="col">02</th>
+                                        <th scope="col">03</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2006</td>
+                                        <td>15세</td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2006</td>
+                                        <td>15세</td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2006</td>
+                                        <td>15세</td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2006</td>
+                                        <td>15세</td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2006</td>
+                                        <td>15세</td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2006</td>
+                                        <td>15세</td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                        <!-- // 월 납입보험료 -->
+
+                        <div class="btn-wrap d-flex justify-content-end mt-5 pt-3 gap-1 border-top">
+                            <button type="submit" class="btn btn-sm btn-primary submit">등록</button>
+                            <a href="/webadmin/page/sub_01_01.html" class="btn btn-sm btn-secondary submit">취소</a>
+                        </div>
+                    </div>
+                </main>
+                <!-- // contents -->
+            </div>
+        </div>
+        <!-- // container -->
+    </div>
+    @@include('./layout/foot.html')
+</body>
+</html>

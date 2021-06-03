@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    @@include('./layout/head.html')
+</head>
+<body>
+    <div id="wrap">
+        <!-- header -->
+        @@include('./layout/header.html', {
+            sub01 : true
+        })
+        <!-- // header -->
+
+        <!-- container -->
+        <div id="container" class="container-fluid">
+            <div class="row">
+                <!-- lnb -->
+                @@include('./layout/lnb.html', {
+                    sub01 : '02'
+                })
+                <!-- // lnb -->
+
+                <!-- contents -->
+                <main id="main">
+                    @@include('./layout/page-title.html', {
+                        sub01 : true,
+                        page : '보험등록관리'
+                    })
+
+                    <!-- 등록 -->
+                    <div class="form-wrap search-wrap">
+                        <table class="table row-table caption-top">
+                            <caption><i class="bi bi-pencil-square"></i>보험종류 등록</caption>
+                            <colgroup>
+                                <col style="width:20%">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">보험종류</th>
+                                    <td>
+                                        <select class="form-select form-select-sm w-25">
+                                            <option value="">암보험</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">보험타입</th>
+                                    <td>
+                                        <input type="text" class="form-control form-control-sm">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">노출 상태</th>
+                                    <td class="align-middle">
+                                        <div class="d-flex gap-4 align-items-center">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="rdo-state" id="rdo-state01" checked>
+                                                <label class="form-check-label" for="rdo-state01">노출함</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="rdo-state" id="rdo-state02">
+                                                <label class="form-check-label" for="rdo-state02">노출안함</label>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="btn-wrap d-flex justify-content-center mt-3 gap-1">
+                            <input type="reset" class="btn btn-sm btn-secondary submit" value="취소">
+                            <button type="submit" class="btn btn-sm btn-primary submit">저장</button>
+                        </div>
+                    </div>
+                    <!-- // 등록 -->
+
+                    <!-- 리스트 -->
+                    @@include('./modules/filter.html')
+                    @@include('./modules/list-table.html', {
+                        sub0102type : true,
+                    })
+                    @@include('./modules/pagination.html')
+                    <!-- // 리스트 -->
+                </main>
+                <!-- // contents -->
+            </div>
+        </div>
+        <!-- // container -->
+    </div>
+
+    <!-- modal -->
+    <article id="modify-modal" class="modal fade" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="modal-title">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="modal-title" class="modal-title">보험종류 수정</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="닫기"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table row-table caption-top">
+                        <colgroup>
+                            <col style="width:20%">
+                            <col>
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th scope="row">보험종류</th>
+                                <td>
+                                    <select class="form-select form-select-sm">
+                                        <option value="">암보험</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">보험타입</th>
+                                <td>
+                                    <input type="text" class="form-control form-control-sm">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">노출 상태</th>
+                                <td class="align-middle">
+                                    <div class="d-flex gap-4 align-items-center">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="rdo-state-modify" id="rdo-state-modify01" checked>
+                                            <label class="form-check-label" for="rdo-state-modify01">노출함</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="rdo-state-modify" id="rdo-state-modify02">
+                                            <label class="form-check-label" for="rdo-state-modify02">노출안함</label>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">취소</button>
+                    <button type="button" class="btn btn-sm btn-primary">저장</button>
+                </div>
+            </div>
+        </div>
+    </article>
+    <!-- // modal -->
+
+    @@include('./layout/foot.html')
+</body>
+</html>

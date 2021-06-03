@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    @@include('./layout/head.html')
+</head>
+<body>
+    <div id="wrap">
+        <!-- header -->
+        @@include('./layout/header.html', {
+            sub06 : true
+        })
+        <!-- // header -->
+
+        <!-- container -->
+        <div id="container" class="container-fluid">
+            <div class="row">
+                <!-- lnb -->
+                @@include('./layout/lnb.html', {
+                    sub06 : '05'
+                })
+                <!-- // lnb -->
+
+                <!-- contents -->
+                <main id="main">
+                    @@include('./layout/page-title.html', {
+                        sub06 : true,
+                        page : '이벤트관리'
+                    })
+
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button type="button" class="nav-link active" id="list-tab" data-bs-toggle="tab" data-bs-target="#event-list" role="tab" aria-controls="event-list" aria-selected="true">이벤트 공지</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button type="button" class="nav-link" id="winner-tab" data-bs-toggle="tab" data-bs-target="#event-winner" role="tab" aria-controls="event-winner" aria-selected="false">당첨자 관리</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane pt-4 show active" id="event-list" role="tabpanel" aria-labelledby="list-tab">
+                            @@include('./modules/list-search.html', {
+                                period : 'type',
+                                options : [
+                                    '등록일', '이벤트기간'
+                                ],
+                                word : true
+                            })
+
+                            @@include('./modules/filter.html')
+
+                            @@include('./modules/list-table.html', {
+                                sub06type : '05',
+                                control : true,
+                                page : '/page/sub_06_05_write.html'
+                            })
+
+                            @@include('./modules/pagination.html')
+                        </div>
+                        <div class="tab-pane pt-4" id="event-winner" role="tabpanel" aria-labelledby="winner-tab">
+                            @@include('./modules/list-search.html', {
+                                event : true
+                            })
+
+                            @@include('./modules/filter.html')
+
+                            @@include('./modules/list-table.html', {
+                                sub06type : '05-2',
+                                control : true,
+                                eventType : true,
+                                page : '/page/sub_06_05_write.html'
+                            })
+
+                            @@include('./modules/pagination.html')
+                        </div>
+                    </div>
+                </main>
+                <!-- // contents -->
+            </div>
+        </div>
+        <!-- // container -->
+    </div>
+    @@include('./layout/foot.html')
+</body>
+</html>

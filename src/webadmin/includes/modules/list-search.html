@@ -1,0 +1,330 @@
+<div class="search-wrap">
+    <table class="table row-table caption-top">
+        <caption><i class="bi bi-search"></i>검색</caption>
+        <colgroup>
+            @@if(!context.rowspan){
+            <col style="width:14%">
+            <col>
+            }
+            @@if(context.rowspan){
+                @@if(context.rowspan === 'col6' || context.rowspan === 'col6-2' || context.rowspan === 'col6-3'){
+                <col style="width:14%">
+                <col style="width:19%">
+                <col style="width:14%">
+                <col style="width:19%">
+                <col style="width:14%">
+                <col>
+                }
+                @@if(context.rowspan === 'col4'){
+                <col style="width:14%">
+                <col>
+                <col style="width:14%">
+                <col>
+                }
+            }
+        </colgroup>
+        <tbody>
+            @@if(context.period){
+            <tr>
+                <th scope="row">기간검색</th>
+                <td>
+                    <div class="slt-date d-flex align-items-center gap-2">
+                        <div class="dates d-flex align-items-center">
+                            @@if(context.period === 'type'){
+                            <select class="form-select form-select-sm" aria-label="기간검색 기준 선택">
+                                @@for(var i=0; i < options.length; i++){
+                                <option value="">`+options[i]+`</option>
+                                }
+                            </select>
+                            }
+                            <div class="datepicker-wrap">
+                                <i class="bi bi-calendar-check"></i>
+                                <input type="text" class="form-control form-control-sm datepicker-here" readonly>
+                            </div>
+                            <span class="bar">~</span>
+                            <div class="datepicker-wrap">
+                                <i class="bi bi-calendar-check"></i>
+                                <input type="text" class="form-control form-control-sm datepicker-here" readonly>
+                            </div>
+                        </div>
+                        <div class="periods d-flex">
+                            <div class="box">
+                                <input type="radio" class="btn-check" name="rdo-period" id="rdo-period01" autocomplete="off" checked>
+                                <label class="btn btn-sm btn-outline-secondary" for="rdo-period01">당일</label>
+                            </div>
+                            <div class="box">
+                                <input type="radio" class="btn-check" name="rdo-period" id="rdo-period02" autocomplete="off">
+                                <label class="btn btn-sm btn-outline-secondary" for="rdo-period02">1일</label>
+                            </div>
+                            <div class="box">
+                                <input type="radio" class="btn-check" name="rdo-period" id="rdo-period03" autocomplete="off">
+                                <label class="btn btn-sm btn-outline-secondary" for="rdo-period03">7일</label>
+                            </div>
+                            <div class="box">
+                                <input type="radio" class="btn-check" name="rdo-period" id="rdo-period04" autocomplete="off">
+                                <label class="btn btn-sm btn-outline-secondary" for="rdo-period04">10일</label>
+                            </div>
+                            <div class="box">
+                                <input type="radio" class="btn-check" name="rdo-period" id="rdo-period05" autocomplete="off">
+                                <label class="btn btn-sm btn-outline-secondary" for="rdo-period05">15일</label>
+                            </div>
+                            <div class="box">
+                                <input type="radio" class="btn-check" name="rdo-period" id="rdo-period06" autocomplete="off">
+                                <label class="btn btn-sm btn-outline-secondary" for="rdo-period06">1개월</label>
+                            </div>
+                            <div class="box">
+                                <input type="radio" class="btn-check" name="rdo-period" id="rdo-period07" autocomplete="off">
+                                <label class="btn btn-sm btn-outline-secondary" for="rdo-period07">3개월</label>
+                            </div>
+                            <div class="box">
+                                <input type="radio" class="btn-check" name="rdo-period" id="rdo-period08" autocomplete="off">
+                                <label class="btn btn-sm btn-outline-secondary" for="rdo-period08">6개월</label>
+                            </div>
+                            <div class="box">
+                                <input type="radio" class="btn-check" name="rdo-period" id="rdo-period09" autocomplete="off">
+                                <label class="btn btn-sm btn-outline-secondary" for="rdo-period09">전체</label>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            } 
+            @@if(context.setting){
+            <tr>
+                <th scope="row">구분</th>
+                <td>
+                    <select class="form-select form-select-sm w-auto" aria-label="구분값 선택">
+                        <option value="">부서명</option>
+                        <option value="">이름</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">상태</th>
+                <td class="align-middle">
+                    <div class="form-check form-check-inline mb-0">
+                        <input class="form-check-input chk-all2" type="checkbox" name="chk-state" id="chk-state-all" value="">
+                        <label class="form-check-label" for="chk-state-all">전체</label>
+                    </div>
+                    <div class="form-check form-check-inline mb-0">
+                        <input class="form-check-input" type="checkbox" name="chk-state" id="chk-state-01" value="">
+                        <label class="form-check-label" for="chk-state-01">정상</label>
+                    </div>
+                    <div class="form-check form-check-inline mb-0">
+                        <input class="form-check-input" type="checkbox" name="chk-state" id="chk-state-02" value="">
+                        <label class="form-check-label" for="chk-state-02">정지</label>
+                    </div>
+                </td>
+            </tr>
+            }
+            @@if(context.sort){
+            <tr>
+                <th scope="row">구분</th>
+                <td>
+                    <select class="form-select form-select-sm w-auto" aria-label="구분값 선택">
+                        <option value="" selected>구분</option>
+                        <option value="">보험리모델링</option>
+                        <option value="">보험컨설팅</option>
+                        <option value="">간편심사보험</option>
+                    </select>
+                </td>
+            </tr>
+            }
+            @@if(context.route){
+            <tr>
+                <th scope="row">경로</th>
+                <td>
+                    <select class="form-select form-select-sm w-auto" aria-label="경로값 선택">
+                        <option value="">전체</option>
+                        <option value="">웹</option>
+                        <option value="">모바일</option>
+                    </select>
+                </td>
+            </tr>
+            }
+            @@if(context.gender){
+            <tr>
+                <th scope="row">성별</th>
+                <td>
+                    <select class="form-select form-select-sm w-auto" aria-label="성별 선택">
+                        <option value="">전체</option>
+                        <option value="">남</option>
+                        <option value="">여</option>
+                    </select>
+                </td>
+            </tr>
+            }
+            @@if(context.word){
+            <tr>
+                <th scope="row">검색어</th>
+                <td>
+                    <input type="text" class="form-control form-control-sm" placeholder="검색어를 입력하세요.">
+                </td>
+            </tr>
+            }
+            @@if(context.event){
+            <tr>
+                <th scope="row">이벤트</th>
+                <td>
+                    <select class="form-select form-select-sm" aria-label="이벤트명 선택">
+                        <option selected>고객감사 이벤트(2021.04.01 ~ 2021.05.01)</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">검색어</th>
+                <td>
+                    <input type="text" class="form-control form-control-sm" placeholder="검색어를 입력하세요.">
+                </td>
+            </tr>
+            }
+
+            @@if(context.rowspan){
+                @@if(context.rowspan === 'col6'){
+                <tr>
+                    <th scope="row">구분</th>
+                    <td>
+                        <select class="form-select form-select-sm w-75" aria-label="구분값 선택">
+                            <option value="">전체</option>
+                            <option value="">손해보험사</option>
+                            <option value="">생명보험사</option>
+                        </select>
+                    </td>
+                    <th scope="row">보험사</th>
+                    <td>
+                        <select class="form-select form-select-sm w-75" aria-label="보험사 선택">
+                            <option value="">전체</option>
+                            <option value="">보험사1</option>
+                            <option value="">보험사2</option>
+                        </select>
+                    </td>
+                    <th scope="row">보험종류</th>
+                    <td>
+                        <select class="form-select form-select-sm w-75" aria-label="보험종류 선택">
+                            <option value="">전체</option>
+                            <option value="">암보험</option>
+                            <option value="">암보험</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">검색어</th>
+                    <td colspan="5">
+                        <input type="text" class="form-control form-control-sm" placeholder="검색어를 입력하세요.">
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">상품번호</th>
+                    <td colspan="5">
+                        <input type="text" class="form-control form-control-sm" placeholder="상품번호를를 입력하세요.">
+                    </td>
+                </tr>
+                }
+                @@if(context.rowspan === 'col6-2'){
+                <tr>
+                    <th scope="row">경로</th>
+                    <td>
+                        <select class="form-select form-select-sm w-75" aria-label="경로값 선택">
+                            <option value="">전체</option>
+                            <option value="">웹</option>
+                            <option value="">모바일</option>
+                        </select>
+                    </td>
+                    <th scope="row">보험종류</th>
+                    <td>
+                        <select class="form-select form-select-sm w-75" aria-label="보험종류 선택">
+                            <option value="">전체</option>
+                            <option value="">암보험</option>
+                            <option value="">암보험</option>
+                        </select>
+                    </td>
+                    <th scope="row">보험타입</th>
+                    <td>
+                        <select class="form-select form-select-sm w-75" aria-label="보험타입 선택">
+                            <option value="">전체</option>
+                            <option value="">보험타입1</option>
+                            <option value="">보험타입2</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">검색어</th>
+                    <td colspan="5">
+                        <input type="text" class="form-control form-control-sm" placeholder="검색어를 입력하세요.">
+                    </td>
+                </tr>
+                }
+                @@if(context.rowspan === 'col6-3'){
+                <tr>
+                    <th scope="row">성별</th>
+                    <td>
+                        <select class="form-select form-select-sm w-75" aria-label="성별 선택">
+                            <option value="">전체</option>
+                            <option value="">남</option>
+                            <option value="">여</option>
+                        </select>
+                    </td>
+                    <th scope="row">직업</th>
+                    <td>
+                        <select class="form-select form-select-sm w-75" aria-label="직업 선택">
+                            <option value="">전체</option>
+                            <option value="">사무직</option>
+                            <option value="">주부</option>
+                            <option value="">학생</option>
+                            <option value="">기타</option>
+                        </select>
+                    </td>
+                    <th scope="row">문의사항</th>
+                    <td>
+                        <select class="form-select form-select-sm w-75" aria-label="문의사항 선택">
+                            <option value="">전체</option>
+                            <option value="">상품에 대한 자세한 문의</option>
+                            <option value="">보험비교문의</option>
+                            <option value="">보험견적문의</option>
+                            <option value="">가입자격문의</option>
+                            <option value="">상품보장내용문의</option>
+                            <option value="">보험리모델링요청</option>
+                            <option value="">기타</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">검색어</th>
+                    <td colspan="5">
+                        <input type="text" class="form-control form-control-sm" placeholder="검색어를 입력하세요.">
+                    </td>
+                </tr>
+                }
+                @@if(context.rowspan === 'col4'){
+                <tr>
+                    <th scope="row">보험종류</th>
+                    <td>
+                        <select class="form-select form-select-sm w-50" aria-label="보험종류 선택">
+                            <option value="">전체</option>
+                            <option value="">암보험</option>
+                            <option value="">암보험</option>
+                        </select>
+                    </td>
+                    <th scope="row">보험타입</th>
+                    <td>
+                        <select class="form-select form-select-sm w-50" aria-label="보험타입 선택">
+                            <option value="">전체</option>
+                            <option value="">비갱신보험</option>
+                            <option value="">변액연금보험</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">검색어</th>
+                    <td colspan="3">
+                        <input type="text" class="form-control form-control-sm" placeholder="검색어를 입력하세요.">
+                    </td>
+                </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <div class="btn-wrap mt-3 d-flex justify-content-center">
+        <button type="submit" class="btn btn-sm btn-dark submit">검색</button>
+    </div>
+</div>

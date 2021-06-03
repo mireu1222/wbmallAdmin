@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    @@include('./layout/head.html')
+</head>
+<body>
+    <div id="wrap">
+        <!-- header -->
+        @@include('./layout/header.html', {
+            sub01 : true
+        })
+        <!-- // header -->
+
+        <!-- container -->
+        <div id="container" class="container-fluid">
+            <div class="row">
+                <!-- lnb -->
+                @@include('./layout/lnb.html', {
+                    sub01 : '01'
+                })
+                <!-- // lnb -->
+
+                <!-- contents -->
+                <main id="main">
+                    @@include('./layout/page-title.html', {
+                        sub01 : 'sub',
+                        page : '보험정보관리'
+                    })
+
+                    <!-- write form -->
+                    <div class="form-wrap">
+                        <!-- 보험 기본 정보 -->
+                        <section>
+                            <h3 class="tbl-title"><i class="bi bi-pencil-square"></i>보험 기본 정보</h3>
+                            <table class="table row-table">
+                                <colgroup>
+                                    <col style="width:20%">
+                                    <col>
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"><label for="slt01">구분</label></th>
+                                        <td class="align-middle">
+                                            <select id="slt01" class="form-select form-select-sm w-25">
+                                                <option value="">손해보험사</option>
+                                                <option value="">생명보험사</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><label for="slt02">보험사</label></th>
+                                        <td class="align-middle">
+                                            <select id="slt02" class="form-select form-select-sm w-25">
+                                                <option value="">KB손해보험</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><label for="slt03">보험종류</label></th>
+                                        <td class="align-middle">
+                                            <select id="slt03" class="form-select form-select-sm w-25">
+                                                <option value="">암보험</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><label for="slt04">보험타입</label></th>
+                                        <td class="align-middle">
+                                            <select id="slt04" class="form-select form-select-sm w-25">
+                                                <option value="">비갱신보험</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><label for="ipt-prod-name">보험상품명</label></th>
+                                        <td class="align-middle">
+                                            <input type="text" id="ipt-prod-name" class="form-control form-control-sm">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">대상</th>
+                                        <td class="align-middle">
+                                            <div class="d-flex gap-4">
+                                                <div class="form-check mb-0">
+                                                    <input class="form-check-input" type="radio" name="rdo-type" id="rdo-type01" value="">
+                                                    <label class="form-check-label" for="rdo-type01">남자</label>
+                                                </div>
+                                                <div class="form-check mb-0">
+                                                    <input class="form-check-input" type="radio" name="rdo-type" id="rdo-type02" value="">
+                                                    <label class="form-check-label" for="rdo-type02">여자</label>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">추천여부</th>
+                                        <td class="align-middle">
+                                            <div class="d-flex gap-4">
+                                                <div class="form-check mb-0">
+                                                    <input class="form-check-input" type="radio" name="rdo-recomm" id="rdo-recomm01" value="">
+                                                    <label class="form-check-label" for="rdo-recomm01">추천</label>
+                                                </div>
+                                                <div class="form-check mb-0">
+                                                    <input class="form-check-input" type="radio" name="rdo-recomm" id="rdo-recomm02" value="">
+                                                    <label class="form-check-label" for="rdo-recomm02">비추천</label>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">상태</th>
+                                        <td class="align-middle">
+                                            <div class="d-flex gap-4">
+                                                <div class="form-check mb-0">
+                                                    <input class="form-check-input" type="radio" name="rdo-state" id="rdo-state01" value="">
+                                                    <label class="form-check-label" for="rdo-state01">정상</label>
+                                                </div>
+                                                <div class="form-check mb-0">
+                                                    <input class="form-check-input" type="radio" name="rdo-state" id="rdo-state02" value="">
+                                                    <label class="form-check-label" for="rdo-state02">중지</label>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                        <!-- // 보험 기본 정보 -->
+
+                        <!-- 보험 설명 -->
+                        <section>
+                            <h3 class="tbl-title"><i class="bi bi-pencil-square"></i>보험 설명</h3>
+                            <div class="table-loop-wrap">
+                                @@loop('./modules/insu-info-table.html', [
+                                    {
+                                        first:true,
+                                    }, {}, {}, {}
+                                ])
+                            </div>
+                        </section>
+                        <!-- // 보험 설명 -->
+
+                        <!-- 보험상품 상세정보 -->
+                        <section>
+                            <h3 class="tbl-title"><i class="bi bi-pencil-square"></i>보험상품 상세정보</h3>
+                            <table class="table row-table">
+                                <colgroup>
+                                    <col style="width:20%">
+                                    <col>
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">월보험료 예시 가이드</th>
+                                        <td>
+                                            <table class="table table-bordered align-middle text-center">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">구분</th>
+                                                        <th scope="col">남</th>
+                                                        <th scope="col">여</th>
+                                                        <th scope="col">관리</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-inline-flex gap-1 align-items-center">
+                                                                <input type="text" class="form-control form-control-sm w-auto" title="나이 입력">
+                                                                <p>세</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-inline-flex gap-1 align-items-center">
+                                                                <input type="text" class="form-control form-control-sm w-auto" title="금액 입력">
+                                                                <p>원</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-inline-flex gap-1 align-items-center">
+                                                                <input type="text" class="form-control form-control-sm w-auto" title="금액 입력">
+                                                                <p>원</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex gap-1 justify-content-center">
+                                                                <button type="button" class="btn btn-sm btn-outline-danger">삭제</button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-inline-flex gap-1 align-items-center">
+                                                                <input type="text" class="form-control form-control-sm w-auto" title="나이 입력">
+                                                                <p>세</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-inline-flex gap-1 align-items-center">
+                                                                <input type="text" class="form-control form-control-sm w-auto" title="금액 입력">
+                                                                <p>원</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-inline-flex gap-1 align-items-center">
+                                                                <input type="text" class="form-control form-control-sm w-auto" title="금액 입력">
+                                                                <p>원</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex gap-1 justify-content-center">
+                                                                <button type="button" class="btn btn-sm btn-outline-primary">추가</button>
+                                                                <button type="button" class="btn btn-sm btn-outline-danger">삭제</button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-inline-flex gap-1 align-items-center">
+                                                                <input type="text" class="form-control form-control-sm w-auto" title="나이 입력">
+                                                                <p>세</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-inline-flex gap-1 align-items-center">
+                                                                <input type="text" class="form-control form-control-sm w-auto" title="금액 입력">
+                                                                <p>원</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-inline-flex gap-1 align-items-center">
+                                                                <input type="text" class="form-control form-control-sm w-auto" title="금액 입력">
+                                                                <p>원</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex gap-1 justify-content-center">
+                                                                <button type="button" class="btn btn-sm btn-outline-primary">추가</button>
+                                                                <button type="button" class="btn btn-sm btn-outline-danger">삭제</button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><label for="ipt-info01">영업나이</label></th>
+                                        <td>
+                                            <input type="text" id="ipt-info01" class="form-control form-control-sm">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><label for="ipt-info02">영업유형</label></th>
+                                        <td>
+                                            <input type="text" id="ipt-info02" class="form-control form-control-sm">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><label for="ipt-info03">보험기간</label></th>
+                                        <td>
+                                            <input type="text" id="ipt-info03" class="form-control form-control-sm">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><label for="ipt-info04">납입기간</label></th>
+                                        <td>
+                                            <input type="text" id="ipt-info04" class="form-control form-control-sm">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><label for="ipt-info05">납입주기</label></th>
+                                        <td>
+                                            <input type="text" id="ipt-info05" class="form-control form-control-sm">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                        <!-- // 보험상품 상세정보 -->
+
+                        <!-- 보험료 기준 -->
+                        <section>
+                            <h3 class="tbl-title"><i class="bi bi-pencil-square"></i>보험료기준</h3>
+                            <div>
+                                <input type="text" class="form-control form-control-sm mb-2" value="기준 : ">
+                            </div>
+                            <table class="table row-table">
+                                <colgroup>
+                                    <col style="width:20%">
+                                    <col>
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">보험료 기준 입력</th>
+                                        <td>
+                                            <table class="table table-bordered align-middle text-center">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">구분</th>
+                                                        <th scope="col">담보명</th>
+                                                        <th scope="col">보험기간</th>
+                                                        <th scope="col">납입기간</th>
+                                                        <th scope="col">영업금액</th>
+                                                        <th scope="col">관리</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <select class="form-select form-select-sm" aria-label="계약 구분 선택">
+                                                                <option value="">기본계약</option>
+                                                                <option value="">필수계약</option>
+                                                                <option value="">선택계약</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control form-control-sm">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control form-control-sm">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control form-control-sm">
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-inline-flex gap-1 align-items-center">
+                                                                <input type="text" class="form-control form-control-sm w-auto">
+                                                                <p class="w-auto">원</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex gap-1 justify-content-center">
+                                                                <button type="button" class="btn btn-sm btn-outline-primary">추가</button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <select class="form-select form-select-sm" aria-label="계약 구분 선택">
+                                                                <option value="">기본계약</option>
+                                                                <option value="">필수계약</option>
+                                                                <option value="">선택계약</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control form-control-sm">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control form-control-sm">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control form-control-sm">
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-inline-flex gap-1 align-items-center">
+                                                                <input type="text" class="form-control form-control-sm w-auto">
+                                                                <p class="w-auto">원</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex gap-1 justify-content-center">
+                                                                <button type="button" class="btn btn-sm btn-outline-primary">추가</button>
+                                                                <button type="button" class="btn btn-sm btn-outline-danger">삭제</button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                        <!-- // 보험료 기준 -->
+
+                        <!-- 보험 설명 -->
+                        <section>
+                            <h3 class="tbl-title"><i class="bi bi-pencil-square"></i>영업 시 알아야 할 사항</h3>
+                            <div class="table-loop-wrap">
+                                @@loop('./modules/insu-info-table.html', [
+                                    {
+                                        first:true,
+                                    }, {}, {}, {}
+                                ])
+                            </div>
+                        </section>
+                        <!-- // 보험 설명 -->
+
+                        <div class="btn-wrap d-flex justify-content-end mt-5 pt-3 gap-1 border-top">
+                            <button type="submit" class="btn btn-sm btn-primary submit">등록</button>
+                            <a href="/webadmin/page/sub_01_01.html" class="btn btn-sm btn-secondary submit">취소</a>
+                        </div>
+                    </div>
+                    <!-- // write form -->
+                </main>
+                <!-- // contents -->
+            </div>
+        </div>
+        <!-- // container -->
+    </div>
+    @@include('./layout/foot.html')
+</body>
+</html>

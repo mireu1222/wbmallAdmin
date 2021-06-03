@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    @@include('./layout/head.html')
+</head>
+<body>
+    <div id="wrap">
+        <!-- header -->
+        @@include('./layout/header.html', {
+            sub03 : true
+        })
+        <!-- // header -->
+
+        <!-- container -->
+        <div id="container" class="container-fluid">
+            <div class="row">
+                <!-- lnb -->
+                @@include('./layout/lnb.html', {
+                    sub03 : '01'
+                })
+                <!-- // lnb -->
+
+                <!-- contents -->
+                <main id="main">
+                    @@include('./layout/page-title.html', {
+                        sub03 : true,
+                        page : '상담고객관리'
+                    })
+
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button type="button" id="route01-tab" class="nav-link active" data-bs-toggle="tab" data-bs-target="#route01" role="tab" aria-controls="route01" aria-selected="true">무료상담신청</button><!-- 해당 route 없을 경우 disabled -->
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button type="button" id="route02-tab" class="nav-link" data-bs-toggle="tab" data-bs-target="#route02" role="tab" aria-controls="route02" aria-selected="false">실시간보험료계산</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button type="button" id="route03-tab" class="nav-link" data-bs-toggle="tab" data-bs-target="#route03" role="tab" aria-controls="route03" aria-selected="false">통합보험료계산</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button type="button" id="route04-tab" class="nav-link" data-bs-toggle="tab" data-bs-target="#route04" role="tab" aria-controls="route04" aria-selected="false">보험비교</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button type="button" id="route05-tab" class="nav-link" data-bs-toggle="tab" data-bs-target="#route05" role="tab" aria-controls="route05" aria-selected="false">온라인상담신청</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button type="button" id="route06-tab" class="nav-link" data-bs-toggle="tab" data-bs-target="#route06" role="tab" aria-controls="route06" aria-selected="false">온라인가입신청</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content pt-4">
+                        <!-- 무료상담신청 -->
+                        <div class="tab-pane fade show active" id="route01" role="tabpanel" aria-labelledby="route01-tab">
+                            <div class="form-wrap">
+                                <section>
+                                    <h3 class="tbl-title"><i class="bi bi-pencil-square"></i>상담신청 정보</h3>
+                                    <table class="table row-table">
+                                        <colgroup>
+                                            <col style="width:20%">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">이름</th>
+                                                <td><input type="text" class="form-control form-control-sm" value="권선생"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">성별</th>
+                                                <td class="align-middle">
+                                                    <div class="d-flex gap-4">
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdo" id="rdo01" value="" checked>
+                                                            <label class="form-check-label" for="rdo01">남자</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdo" id="rdo02" value="">
+                                                            <label class="form-check-label" for="rdo02">여자</label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">생년월일</th>
+                                                <td>
+                                                    <div class="d-flex align-items-center gap-3">
+                                                        <input type="text" class="form-control form-control-sm w-auto" value="19820101">
+                                                        <p>(보험나이 <strong class="text-primary">40</strong>세)</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">휴대폰번호</th>
+                                                <td class="align-middle">010-0000-0000</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">신청시간</th>
+                                                <td class="align-middle">2021.04.15 11:00</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">상담내용</th>
+                                                <td class="align-middle">암보험에 대한 문의가 있습니다.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <section>
+                                    <h3 class="tbl-title"><i class="bi bi-pencil-square"></i>상담사 변경</h3>
+                                    <table class="table row-table">
+                                        <colgroup>
+                                            <col style="width:20%">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">상담사</th>
+                                                <td>
+                                                    <div class="d-flex gap-1">
+                                                        <input type="text" class="form-control form-control-sm w-25" value="김상담설계사">
+                                                        <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#counselor-search">찾기</button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <div class="btn-wrap d-flex justify-content-end mt-3 gap-1">
+                                    <button type="submit" class="btn btn-sm btn-primary submit">저장</button>
+                                    <a href="/webadmin/page/sub_03_03.html" class="btn btn-sm btn-secondary submit">취소</a>
+                                </div>
+                            </div>
+
+                            <!-- SMS발송내역 추가(기존 상담내역과 tab으로 분리. DOM 수정 있음.) -->
+                            <div class="tab-bottom-content">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button type="button" id="history01-tab" class="nav-link active" data-bs-toggle="tab" data-bs-target="#history01" role="tab" aria-controls="history01" aria-selected="true">상담진행내역</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button type="button" id="history02-tab" class="nav-link" data-bs-toggle="tab" data-bs-target="#history02" role="tab" aria-controls="history02" aria-selected="false">SMS발송내역</button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div id="history01" class="tab-pane fade show active" role="tabpanel" aria-labelledby="history01-tab">
+                                        <div class="form-wrap">
+                                            <!-- 내역추가 loop -->
+                                            <section>
+                                                <div class="d-flex align-items-center mb-2 gap-1">
+                                                    <h3 class="tbl-title pb-0"><i class="bi bi-pencil-square"></i>상담 진행 내역</h3>
+                                                    <button type="button" class="btn btn-sm btn-outline-primary ms-auto">저장</button>
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary">취소</button>
+                                                </div>
+                                                <table class="table row-table">
+                                                    <colgroup>
+                                                        <col style="width:20%">
+                                                        <col>
+                                                    </colgroup>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">제목</th>
+                                                            <td class="align-middle">
+                                                                <input type="text" class="form-control form-control-sm">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">작성자</th>
+                                                            <td class="align-middle">김상담</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">등록일</th>
+                                                            <td class="align-middle">2021.05.01</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">관심 보험</th>
+                                                            <td class="align-middle">
+                                                                <input type="text" class="form-control form-control-sm">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">내용</th>
+                                                            <td class="align-middle">
+                                                                <textarea class="form-control form-control-sm"></textarea>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">상태</th>
+                                                            <td class="align-middle">
+                                                                <div class="d-flex gap-4">
+                                                                    <div class="form-check mb-0">
+                                                                        <input class="form-check-input" type="radio" name="rdostate" id="rdostate01" value="" checked>
+                                                                        <label class="form-check-label" for="rdostate01">접수</label>
+                                                                    </div>
+                                                                    <div class="form-check mb-0">
+                                                                        <input class="form-check-input" type="radio" name="rdostate" id="rdostate02" value="">
+                                                                        <label class="form-check-label" for="rdostate02">부재</label>
+                                                                    </div>
+                                                                    <div class="form-check mb-0">
+                                                                        <input class="form-check-input" type="radio" name="rdostate" id="rdostate03" value="">
+                                                                        <label class="form-check-label" for="rdostate03">거절</label>
+                                                                    </div>
+                                                                    <div class="form-check mb-0">
+                                                                        <input class="form-check-input" type="radio" name="rdostate" id="rdostate04" value="">
+                                                                        <label class="form-check-label" for="rdostate04">가망고객</label>
+                                                                    </div>
+                                                                    <div class="form-check mb-0">
+                                                                        <input class="form-check-input" type="radio" name="rdostate" id="rdostate05" value="">
+                                                                        <label class="form-check-label" for="rdostate05">계약</label>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">첨부파일</th>
+                                                            <td class="align-middle">
+                                                                <input class="form-control form-control-sm" type="file" id="file-upload">
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </section>
+                                            <!-- // 내역추가 loop -->
+                                            <!-- 내역추가 loop -->
+                                            <section>
+                                                <div class="d-flex align-items-center mb-2 gap-1">
+                                                    <h3 class="tbl-title pb-0"><i class="bi bi-pencil-square"></i>상담 진행 내역</h3>
+                                                    <button type="button" class="btn btn-sm btn-outline-primary ms-auto">수정</button>
+                                                    <button type="button" class="btn btn-sm btn-outline-danger">삭제</button>
+                                                </div>
+                                                <table class="table row-table">
+                                                    <colgroup>
+                                                        <col style="width:20%">
+                                                        <col>
+                                                    </colgroup>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">제목</th>
+                                                            <td class="align-middle">암보험 상담 40세</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">작성자</th>
+                                                            <td class="align-middle">김상담</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">등록일</th>
+                                                            <td class="align-middle">2021.05.01</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">관심 보험</th>
+                                                            <td class="align-middle">암보험 비갱신형</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">내용</th>
+                                                            <td class="align-middle">
+                                                                오전 10시 통화하여 보험 상담<br>
+                                                                암보험에 관심많으며, 현재 40대로 가장이며, 태양산업의 부장으로 근무중<br>
+                                                                현재 보험료로 월 100만원 지출 중.<br><br>
+                                                                추가 상담하기로 함.
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">상태</th>
+                                                            <td class="align-middle">
+                                                                <span class="badge bg-secondary">접수</span>
+                                                                <span class="badge bg-warning text-dark">부재</span>
+                                                                <span class="badge bg-danger">거절</span>
+                                                                <span class="badge bg-primary">가망고객</span>
+                                                                <span class="badge bg-success">계약</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">첨부파일</th>
+                                                            <td class="align-middle"><a href="#n" class="link-primary fw-bold"><i class="bi bi-download me-1"></i>김상담님암보험설계서.pdf</a></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </section>
+                                            <!-- // 내역추가 loop -->
+                                            <div class="btn-wrap d-flex justify-content-end mt-3 gap-1">
+                                                <button type="submit" class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus-circle me-1"></i>상담 진행 내역 추가</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="history02" class="tab-pane fade" role="tabpanel" aria-labelledby="history02-tab">
+                                        <div class="form-wrap">
+                                            <!-- loop -->
+                                            <section>
+                                                <div class="d-flex align-items-center mb-2 gap-1">
+                                                    <h3 class="tbl-title pb-0"><i class="bi bi-pencil-square"></i>SMS 발송내역</h3>
+                                                    <button type="button" class="btn btn-sm btn-outline-primary ms-auto">발송하기</button>
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary">취소</button>
+                                                </div>
+                                                <table class="table row-table">
+                                                    <colgroup>
+                                                        <col style="width:20%">
+                                                        <col>
+                                                        <col style="width:20%">
+                                                        <col>
+                                                    </colgroup>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">작성자</th>
+                                                            <td class="align-middle">김설계</td>
+                                                            <th scope="row">발송일</th>
+                                                            <td class="align-middle">2021.06.22</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">SMS</th>
+                                                            <td colspan="3" class="align-middle">
+                                                                <textarea class="form-control form-control-sm"></textarea>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </section>
+                                            <!-- // loop -->
+                                            <!-- loop -->
+                                            <section>
+                                                <div class="d-flex align-items-center mb-2 gap-1">
+                                                    <h3 class="tbl-title pb-0"><i class="bi bi-pencil-square"></i>SMS 발송내역</h3>
+                                                    <button type="button" class="btn btn-sm btn-outline-danger ms-auto">삭제</button>
+                                                </div>
+                                                <table class="table row-table">
+                                                    <colgroup>
+                                                        <col style="width:20%">
+                                                        <col>
+                                                        <col style="width:20%">
+                                                        <col>
+                                                    </colgroup>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">작성자</th>
+                                                            <td class="align-middle">김설계</td>
+                                                            <th scope="row">발송일</th>
+                                                            <td class="align-middle">2021.06.22</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">SMS</th>
+                                                            <td colspan="3" class="align-middle">
+                                                                <textarea class="form-control form-control-sm">보냈던 문자 내역이 노출됨</textarea>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </section>
+                                            <!-- // loop -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // SMS발송내역 추가(기존 상담내역과 tab으로 분리. DOM 수정 있음.) -->
+                            <div class="btn-wrap d-flex justify-content-end mt-5 pt-3 gap-1 border-top">
+                                <a href="/webadmin/page/sub_03_02.html" class="btn btn-sm btn-secondary submit">목록</a>
+                            </div>
+                        </div>
+                        <!-- // 무료상담신청 -->
+                        <!-- 실시간보험료계산 -->
+                        <div class="tab-pane fade" id="route02" role="tabpanel" aria-labelledby="route02-tab">
+                            <div class="form-wrap">
+                                <section>
+                                    <h3 class="tbl-title"><i class="bi bi-pencil-square"></i>검색 정보</h3>
+                                    <table class="table row-table">
+                                        <colgroup>
+                                            <col style="width:20%">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">이름</th>
+                                                <td><input type="text" class="form-control form-control-sm" value="권선생"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">성별</th>
+                                                <td class="align-middle">
+                                                    <div class="d-flex gap-4">
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdo" id="rdo01" value="" checked>
+                                                            <label class="form-check-label" for="rdo01">남자</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdo" id="rdo02" value="">
+                                                            <label class="form-check-label" for="rdo02">여자</label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">생년월일</th>
+                                                <td>
+                                                    <div class="d-flex align-items-center gap-3">
+                                                        <input type="text" class="form-control form-control-sm w-auto" value="19820101">
+                                                        <p>(보험나이 <strong class="text-primary">40</strong>세)</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">휴대폰번호</th>
+                                                <td class="align-middle">010-0000-0000</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">인증시간</th>
+                                                <td class="align-middle">2021.04.15 11:00</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">검색보험</th>
+                                                <td class="align-middle">MG손해보험 : (무)건강명의4대질병진단보험(20.04)(암중점형)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <section>
+                                    <h3 class="tbl-title"><i class="bi bi-pencil-square"></i>상담사 변경</h3>
+                                    <table class="table row-table">
+                                        <colgroup>
+                                            <col style="width:20%">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">상담사</th>
+                                                <td>
+                                                    <div class="d-flex gap-1">
+                                                        <input type="text" class="form-control form-control-sm w-25" value="김상담설계사">
+                                                        <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#counselor-search">찾기</button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <div class="btn-wrap d-flex justify-content-end mt-3 gap-1">
+                                    <button type="submit" class="btn btn-sm btn-primary submit">저장</button>
+                                    <a href="/webadmin/page/sub_03_03.html" class="btn btn-sm btn-secondary submit">취소</a>
+                                </div>
+                            </div>
+                            <div class="form-wrap partition">
+                                <!-- 내역추가 loop -->
+                                <section>
+                                    <div class="d-flex align-items-center mb-2 gap-1">
+                                        <h3 class="tbl-title pb-0"><i class="bi bi-pencil-square"></i>상담 진행 내역</h3>
+                                        <button type="button" class="btn btn-sm btn-outline-primary ms-auto">저장</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">취소</button>
+                                    </div>
+                                    <table class="table row-table">
+                                        <colgroup>
+                                            <col style="width:20%">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">제목</th>
+                                                <td class="align-middle">
+                                                    <input type="text" class="form-control form-control-sm">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">작성자</th>
+                                                <td class="align-middle">김상담</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">등록일</th>
+                                                <td class="align-middle">2021.05.01</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">관심 보험</th>
+                                                <td class="align-middle">
+                                                    <input type="text" class="form-control form-control-sm">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">내용</th>
+                                                <td class="align-middle">
+                                                    <textarea class="form-control form-control-sm"></textarea>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">상태</th>
+                                                <td class="align-middle">
+                                                    <div class="d-flex gap-4">
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate01" value="" checked>
+                                                            <label class="form-check-label" for="rdostate01">접수</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate02" value="">
+                                                            <label class="form-check-label" for="rdostate02">부재</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate03" value="">
+                                                            <label class="form-check-label" for="rdostate03">거절</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate04" value="">
+                                                            <label class="form-check-label" for="rdostate04">가망고객</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate05" value="">
+                                                            <label class="form-check-label" for="rdostate05">계약</label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">첨부파일</th>
+                                                <td class="align-middle">
+                                                    <input class="form-control form-control-sm" type="file" id="file-upload">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <!-- // 내역추가 loop -->
+                                <!-- 내역추가 loop -->
+                                <section>
+                                    <div class="d-flex align-items-center mb-2 gap-1">
+                                        <h3 class="tbl-title pb-0"><i class="bi bi-pencil-square"></i>상담 진행 내역</h3>
+                                        <button type="button" class="btn btn-sm btn-outline-primary ms-auto">수정</button>
+                                        <button type="button" class="btn btn-sm btn-outline-danger">삭제</button>
+                                    </div>
+                                    <table class="table row-table">
+                                        <colgroup>
+                                            <col style="width:20%">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">제목</th>
+                                                <td class="align-middle">암보험 상담 40세</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">작성자</th>
+                                                <td class="align-middle">김상담</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">등록일</th>
+                                                <td class="align-middle">2021.05.01</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">관심 보험</th>
+                                                <td class="align-middle">암보험 비갱신형</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">내용</th>
+                                                <td class="align-middle">
+                                                    오전 10시 통화하여 보험 상담<br>
+                                                    암보험에 관심많으며, 현재 40대로 가장이며, 태양산업의 부장으로 근무중<br>
+                                                    현재 보험료로 월 100만원 지출 중.<br><br>
+                                                    추가 상담하기로 함.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">상태</th>
+                                                <td class="align-middle">
+                                                    <span class="badge bg-secondary">접수</span>
+                                                    <span class="badge bg-warning text-dark">부재</span>
+                                                    <span class="badge bg-danger">거절</span>
+                                                    <span class="badge bg-primary">가망고객</span>
+                                                    <span class="badge bg-success">계약</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">첨부파일</th>
+                                                <td class="align-middle"><a href="#n" class="link-primary fw-bold"><i class="bi bi-download me-1"></i>김상담님암보험설계서.pdf</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <!-- // 내역추가 loop -->
+                                <div class="btn-wrap d-flex justify-content-end mt-3 gap-1">
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus-circle me-1"></i>상담 진행 내역 추가</button>
+                                </div>
+                            </div>
+                            <div class="btn-wrap d-flex justify-content-end mt-5 pt-3 gap-1 border-top">
+                                <a href="/webadmin/page/sub_03_02.html" class="btn btn-sm btn-secondary submit">목록</a>
+                            </div>
+                        </div>
+                        <!-- // 실시간보험료계산 -->
+                        <!-- 통합보험료계산 -->
+                        <div class="tab-pane fade" id="route03" role="tabpanel" aria-labelledby="route03-tab">
+                            <div class="form-wrap">
+                                <section>
+                                    <h3 class="tbl-title"><i class="bi bi-pencil-square"></i>검색 정보</h3>
+                                    <table class="table row-table">
+                                        <colgroup>
+                                            <col style="width:20%">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">이름</th>
+                                                <td><input type="text" class="form-control form-control-sm" value="권선생"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">성별</th>
+                                                <td class="align-middle">
+                                                    <div class="d-flex gap-4">
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdo" id="rdo01" value="" checked>
+                                                            <label class="form-check-label" for="rdo01">남자</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdo" id="rdo02" value="">
+                                                            <label class="form-check-label" for="rdo02">여자</label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">생년월일</th>
+                                                <td>
+                                                    <div class="d-flex align-items-center gap-3">
+                                                        <input type="text" class="form-control form-control-sm w-auto" value="19820101">
+                                                        <p>(보험나이 <strong class="text-primary">40</strong>세)</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">휴대폰번호</th>
+                                                <td class="align-middle">010-0000-0000</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">인증시간</th>
+                                                <td class="align-middle">2021.04.15 11:00</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">검색보험</th>
+                                                <td class="align-middle">
+                                                    <ol class="insu-depth">
+                                                        <li>암보험</li>
+                                                        <li>갱신형</li>
+                                                    </ol>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <section>
+                                    <h3 class="tbl-title"><i class="bi bi-pencil-square"></i>상담사 변경</h3>
+                                    <table class="table row-table">
+                                        <colgroup>
+                                            <col style="width:20%">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">상담사</th>
+                                                <td>
+                                                    <div class="d-flex gap-1">
+                                                        <input type="text" class="form-control form-control-sm w-25" value="김상담설계사">
+                                                        <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#counselor-search">찾기</button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <div class="btn-wrap d-flex justify-content-end mt-3 gap-1">
+                                    <button type="submit" class="btn btn-sm btn-primary submit">저장</button>
+                                    <a href="/webadmin/page/sub_03_03.html" class="btn btn-sm btn-secondary submit">취소</a>
+                                </div>
+                            </div>
+                            <div class="form-wrap partition">
+                                <!-- 내역추가 loop -->
+                                <section>
+                                    <div class="d-flex align-items-center mb-2 gap-1">
+                                        <h3 class="tbl-title pb-0"><i class="bi bi-pencil-square"></i>상담 진행 내역</h3>
+                                        <button type="button" class="btn btn-sm btn-outline-primary ms-auto">저장</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">취소</button>
+                                    </div>
+                                    <table class="table row-table">
+                                        <colgroup>
+                                            <col style="width:20%">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">제목</th>
+                                                <td class="align-middle">
+                                                    <input type="text" class="form-control form-control-sm">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">작성자</th>
+                                                <td class="align-middle">김상담</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">등록일</th>
+                                                <td class="align-middle">2021.05.01</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">관심 보험</th>
+                                                <td class="align-middle">
+                                                    <input type="text" class="form-control form-control-sm">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">내용</th>
+                                                <td class="align-middle">
+                                                    <textarea class="form-control form-control-sm"></textarea>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">상태</th>
+                                                <td class="align-middle">
+                                                    <div class="d-flex gap-4">
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate01" value="" checked>
+                                                            <label class="form-check-label" for="rdostate01">접수</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate02" value="">
+                                                            <label class="form-check-label" for="rdostate02">부재</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate03" value="">
+                                                            <label class="form-check-label" for="rdostate03">거절</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate04" value="">
+                                                            <label class="form-check-label" for="rdostate04">가망고객</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate05" value="">
+                                                            <label class="form-check-label" for="rdostate05">계약</label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">첨부파일</th>
+                                                <td class="align-middle">
+                                                    <input class="form-control form-control-sm" type="file" id="file-upload">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <!-- // 내역추가 loop -->
+                                <!-- 내역추가 loop -->
+                                <section>
+                                    <div class="d-flex align-items-center mb-2 gap-1">
+                                        <h3 class="tbl-title pb-0"><i class="bi bi-pencil-square"></i>상담 진행 내역</h3>
+                                        <button type="button" class="btn btn-sm btn-outline-primary ms-auto">수정</button>
+                                        <button type="button" class="btn btn-sm btn-outline-danger">삭제</button>
+                                    </div>
+                                    <table class="table row-table">
+                                        <colgroup>
+                                            <col style="width:20%">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">제목</th>
+                                                <td class="align-middle">암보험 상담 40세</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">작성자</th>
+                                                <td class="align-middle">김상담</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">등록일</th>
+                                                <td class="align-middle">2021.05.01</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">관심 보험</th>
+                                                <td class="align-middle">암보험 비갱신형</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">내용</th>
+                                                <td class="align-middle">
+                                                    오전 10시 통화하여 보험 상담<br>
+                                                    암보험에 관심많으며, 현재 40대로 가장이며, 태양산업의 부장으로 근무중<br>
+                                                    현재 보험료로 월 100만원 지출 중.<br><br>
+                                                    추가 상담하기로 함.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">상태</th>
+                                                <td class="align-middle">
+                                                    <span class="badge bg-secondary">접수</span>
+                                                    <span class="badge bg-warning text-dark">부재</span>
+                                                    <span class="badge bg-danger">거절</span>
+                                                    <span class="badge bg-primary">가망고객</span>
+                                                    <span class="badge bg-success">계약</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">첨부파일</th>
+                                                <td class="align-middle"><a href="#n" class="link-primary fw-bold"><i class="bi bi-download me-1"></i>김상담님암보험설계서.pdf</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <!-- // 내역추가 loop -->
+                                <div class="btn-wrap d-flex justify-content-end mt-3 gap-1">
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus-circle me-1"></i>상담 진행 내역 추가</button>
+                                </div>
+                            </div>
+                            <div class="btn-wrap d-flex justify-content-end mt-5 pt-3 gap-1 border-top">
+                                <a href="/webadmin/page/sub_03_02.html" class="btn btn-sm btn-secondary submit">목록</a>
+                            </div>
+                        </div>
+                        <!-- // 통합보험료계산 -->
+                        <!-- 보험비교 -->
+                        <div class="tab-pane fade" id="route04" role="tabpanel" aria-labelledby="route04-tab">
+                            <div class="form-wrap">
+                                <section>
+                                    <h3 class="tbl-title"><i class="bi bi-pencil-square"></i>검색 정보</h3>
+                                    <table class="table row-table">
+                                        <colgroup>
+                                            <col style="width:20%">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">이름</th>
+                                                <td><input type="text" class="form-control form-control-sm" value="권선생"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">성별</th>
+                                                <td class="align-middle">
+                                                    <div class="d-flex gap-4">
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdo" id="rdo01" value="" checked>
+                                                            <label class="form-check-label" for="rdo01">남자</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdo" id="rdo02" value="">
+                                                            <label class="form-check-label" for="rdo02">여자</label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">생년월일</th>
+                                                <td>
+                                                    <div class="d-flex align-items-center gap-3">
+                                                        <input type="text" class="form-control form-control-sm w-auto" value="19820101">
+                                                        <p>(보험나이 <strong class="text-primary">40</strong>세)</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">휴대폰번호</th>
+                                                <td class="align-middle">010-0000-0000</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">인증시간</th>
+                                                <td class="align-middle">2021.04.15 11:00</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">검색보험</th>
+                                                <td class="align-middle">MG손해보험 : (무)건강명의4대질병진단보험(20.04)(암중점형)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <section>
+                                    <h3 class="tbl-title"><i class="bi bi-pencil-square"></i>상담사 변경</h3>
+                                    <table class="table row-table">
+                                        <colgroup>
+                                            <col style="width:20%">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">상담사</th>
+                                                <td>
+                                                    <div class="d-flex gap-1">
+                                                        <input type="text" class="form-control form-control-sm w-25" value="김상담설계사">
+                                                        <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#counselor-search">찾기</button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <div class="btn-wrap d-flex justify-content-end mt-3 gap-1">
+                                    <button type="submit" class="btn btn-sm btn-primary submit">저장</button>
+                                    <a href="/webadmin/page/sub_03_03.html" class="btn btn-sm btn-secondary submit">취소</a>
+                                </div>
+                            </div>
+                            <div class="form-wrap partition">
+                                <!-- 내역추가 loop -->
+                                <section>
+                                    <div class="d-flex align-items-center mb-2 gap-1">
+                                        <h3 class="tbl-title pb-0"><i class="bi bi-pencil-square"></i>상담 진행 내역</h3>
+                                        <button type="button" class="btn btn-sm btn-outline-primary ms-auto">저장</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">취소</button>
+                                    </div>
+                                    <table class="table row-table">
+                                        <colgroup>
+                                            <col style="width:20%">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">제목</th>
+                                                <td class="align-middle">
+                                                    <input type="text" class="form-control form-control-sm">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">작성자</th>
+                                                <td class="align-middle">김상담</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">등록일</th>
+                                                <td class="align-middle">2021.05.01</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">관심 보험</th>
+                                                <td class="align-middle">
+                                                    <input type="text" class="form-control form-control-sm">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">내용</th>
+                                                <td class="align-middle">
+                                                    <textarea class="form-control form-control-sm"></textarea>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">상태</th>
+                                                <td class="align-middle">
+                                                    <div class="d-flex gap-4">
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate01" value="" checked>
+                                                            <label class="form-check-label" for="rdostate01">접수</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate02" value="">
+                                                            <label class="form-check-label" for="rdostate02">부재</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate03" value="">
+                                                            <label class="form-check-label" for="rdostate03">거절</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate04" value="">
+                                                            <label class="form-check-label" for="rdostate04">가망고객</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate05" value="">
+                                                            <label class="form-check-label" for="rdostate05">계약</label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">첨부파일</th>
+                                                <td class="align-middle">
+                                                    <input class="form-control form-control-sm" type="file" id="file-upload">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <!-- // 내역추가 loop -->
+                                <!-- 내역추가 loop -->
+                                <section>
+                                    <div class="d-flex align-items-center mb-2 gap-1">
+                                        <h3 class="tbl-title pb-0"><i class="bi bi-pencil-square"></i>상담 진행 내역</h3>
+                                        <button type="button" class="btn btn-sm btn-outline-primary ms-auto">수정</button>
+                                        <button type="button" class="btn btn-sm btn-outline-danger">삭제</button>
+                                    </div>
+                                    <table class="table row-table">
+                                        <colgroup>
+                                            <col style="width:20%">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">제목</th>
+                                                <td class="align-middle">암보험 상담 40세</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">작성자</th>
+                                                <td class="align-middle">김상담</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">등록일</th>
+                                                <td class="align-middle">2021.05.01</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">관심 보험</th>
+                                                <td class="align-middle">암보험 비갱신형</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">내용</th>
+                                                <td class="align-middle">
+                                                    오전 10시 통화하여 보험 상담<br>
+                                                    암보험에 관심많으며, 현재 40대로 가장이며, 태양산업의 부장으로 근무중<br>
+                                                    현재 보험료로 월 100만원 지출 중.<br><br>
+                                                    추가 상담하기로 함.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">상태</th>
+                                                <td class="align-middle">
+                                                    <span class="badge bg-secondary">접수</span>
+                                                    <span class="badge bg-warning text-dark">부재</span>
+                                                    <span class="badge bg-danger">거절</span>
+                                                    <span class="badge bg-primary">가망고객</span>
+                                                    <span class="badge bg-success">계약</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">첨부파일</th>
+                                                <td class="align-middle"><a href="#n" class="link-primary fw-bold"><i class="bi bi-download me-1"></i>김상담님암보험설계서.pdf</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <!-- // 내역추가 loop -->
+                                <div class="btn-wrap d-flex justify-content-end mt-3 gap-1">
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus-circle me-1"></i>상담 진행 내역 추가</button>
+                                </div>
+                            </div>
+                            <div class="btn-wrap d-flex justify-content-end mt-5 pt-3 gap-1 border-top">
+                                <a href="/webadmin/page/sub_03_02.html" class="btn btn-sm btn-secondary submit">목록</a>
+                            </div>
+                        </div>
+                        <!-- // 보험비교 -->
+                        <!-- 온라인상담신청 -->
+                        <div class="tab-pane fade" id="route05" role="tabpanel" aria-labelledby="route05-tab">
+                            <div class="form-wrap">
+                                <section>
+                                    <h3 class="tbl-title"><i class="bi bi-pencil-square"></i>상담신청 정보</h3>
+                                    <table class="table row-table">
+                                        <colgroup>
+                                            <col style="width:20%">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">이름</th>
+                                                <td><input type="text" class="form-control form-control-sm" value="권선생"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">성별</th>
+                                                <td class="align-middle">
+                                                    <div class="d-flex gap-4">
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdo" id="rdo01" value="" checked>
+                                                            <label class="form-check-label" for="rdo01">남자</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdo" id="rdo02" value="">
+                                                            <label class="form-check-label" for="rdo02">여자</label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">생년월일</th>
+                                                <td>
+                                                    <div class="d-flex align-items-center gap-3">
+                                                        <input type="text" class="form-control form-control-sm w-auto" value="19820101">
+                                                        <p>(보험나이 <strong class="text-primary">40</strong>세)</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">휴대폰번호</th>
+                                                <td class="align-middle">010-0000-0000</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">신청시간</th>
+                                                <td class="align-middle">2021.04.15 11:00</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">문의보험상품</th>
+                                                <td class="align-middle">
+                                                    @@include('./modules/chk-loop.html',{
+                                                        chk : 'chk-prod',
+                                                        slt : [
+                                                            '무해지환급형보험', '의료실비보험', '암보험', '치아보험', '건강보험', '어린이/태아보험',
+                                                            '운전자보험', '상해/골프보험', '종신/정기보험', '저축/연금보험', '치매간병/실버보험'
+                                                        ]
+                                                    })
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">예상보험료</th>
+                                                <td class="align-middle">
+                                                    @@include('./modules/chk-loop.html',{
+                                                        rdo : 'rdo-slt',
+                                                        slt : [
+                                                            '최소보장(20,000~30,000원대)', '기본보장(30,000~40,000원대)', '많은보장(50,000원대 이상)'
+                                                        ]
+                                                    })
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">보험선택기준</th>
+                                                <td class="align-middle">
+                                                    @@include('./modules/chk-loop.html',{
+                                                        rdo : 'rdo-slt2',
+                                                        slt : [
+                                                            '동일보장에 저렴한 보험', '보장이 잘되는 보험', '알려진 브랜드 보험'
+                                                        ]
+                                                    })
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <section>
+                                    <h3 class="tbl-title"><i class="bi bi-pencil-square"></i>상담사 변경</h3>
+                                    <table class="table row-table">
+                                        <colgroup>
+                                            <col style="width:20%">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">상담사</th>
+                                                <td>
+                                                    <div class="d-flex gap-1">
+                                                        <input type="text" class="form-control form-control-sm w-25" value="김상담설계사">
+                                                        <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#counselor-search">찾기</button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <div class="btn-wrap d-flex justify-content-end mt-3 gap-1">
+                                    <button type="submit" class="btn btn-sm btn-primary submit">저장</button>
+                                    <a href="/webadmin/page/sub_03_03.html" class="btn btn-sm btn-secondary submit">취소</a>
+                                </div>
+                            </div>
+                            <div class="form-wrap partition">
+                                <!-- 내역추가 loop -->
+                                <section>
+                                    <div class="d-flex align-items-center mb-2 gap-1">
+                                        <h3 class="tbl-title pb-0"><i class="bi bi-pencil-square"></i>상담 진행 내역</h3>
+                                        <button type="button" class="btn btn-sm btn-outline-primary ms-auto">저장</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">취소</button>
+                                    </div>
+                                    <table class="table row-table">
+                                        <colgroup>
+                                            <col style="width:20%">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">제목</th>
+                                                <td class="align-middle">
+                                                    <input type="text" class="form-control form-control-sm">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">작성자</th>
+                                                <td class="align-middle">김상담</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">등록일</th>
+                                                <td class="align-middle">2021.05.01</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">관심 보험</th>
+                                                <td class="align-middle">
+                                                    <input type="text" class="form-control form-control-sm">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">내용</th>
+                                                <td class="align-middle">
+                                                    <textarea class="form-control form-control-sm"></textarea>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">상태</th>
+                                                <td class="align-middle">
+                                                    <div class="d-flex gap-4">
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate01" value="" checked>
+                                                            <label class="form-check-label" for="rdostate01">접수</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate02" value="">
+                                                            <label class="form-check-label" for="rdostate02">부재</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate03" value="">
+                                                            <label class="form-check-label" for="rdostate03">거절</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate04" value="">
+                                                            <label class="form-check-label" for="rdostate04">가망고객</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate05" value="">
+                                                            <label class="form-check-label" for="rdostate05">계약</label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">첨부파일</th>
+                                                <td class="align-middle">
+                                                    <input class="form-control form-control-sm" type="file" id="file-upload">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <!-- // 내역추가 loop -->
+                                <!-- 내역추가 loop -->
+                                <section>
+                                    <div class="d-flex align-items-center mb-2 gap-1">
+                                        <h3 class="tbl-title pb-0"><i class="bi bi-pencil-square"></i>상담 진행 내역</h3>
+                                        <button type="button" class="btn btn-sm btn-outline-primary ms-auto">수정</button>
+                                        <button type="button" class="btn btn-sm btn-outline-danger">삭제</button>
+                                    </div>
+                                    <table class="table row-table">
+                                        <colgroup>
+                                            <col style="width:20%">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">제목</th>
+                                                <td class="align-middle">암보험 상담 40세</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">작성자</th>
+                                                <td class="align-middle">김상담</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">등록일</th>
+                                                <td class="align-middle">2021.05.01</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">관심 보험</th>
+                                                <td class="align-middle">암보험 비갱신형</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">내용</th>
+                                                <td class="align-middle">
+                                                    오전 10시 통화하여 보험 상담<br>
+                                                    암보험에 관심많으며, 현재 40대로 가장이며, 태양산업의 부장으로 근무중<br>
+                                                    현재 보험료로 월 100만원 지출 중.<br><br>
+                                                    추가 상담하기로 함.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">상태</th>
+                                                <td class="align-middle">
+                                                    <span class="badge bg-secondary">접수</span>
+                                                    <span class="badge bg-warning text-dark">부재</span>
+                                                    <span class="badge bg-danger">거절</span>
+                                                    <span class="badge bg-primary">가망고객</span>
+                                                    <span class="badge bg-success">계약</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">첨부파일</th>
+                                                <td class="align-middle"><a href="#n" class="link-primary fw-bold"><i class="bi bi-download me-1"></i>김상담님암보험설계서.pdf</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <!-- // 내역추가 loop -->
+                                <div class="btn-wrap d-flex justify-content-end mt-3 gap-1">
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus-circle me-1"></i>상담 진행 내역 추가</button>
+                                </div>
+                            </div>
+                            <div class="btn-wrap d-flex justify-content-end mt-5 pt-3 gap-1 border-top">
+                                <a href="/webadmin/page/sub_03_02.html" class="btn btn-sm btn-secondary submit">목록</a>
+                            </div>
+                        </div>
+                        <!-- // 온라인상담신청 -->
+                        <!-- 온라인가입신청 -->
+                        <div class="tab-pane fade" id="route06" role="tabpanel" aria-labelledby="route06-tab">
+                            <div class="form-wrap">
+                                <section>
+                                    <h3 class="tbl-title"><i class="bi bi-pencil-square"></i>상담신청 정보</h3>
+                                    <table class="table row-table">
+                                        <colgroup>
+                                            <col style="width:20%">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">이름</th>
+                                                <td><input type="text" class="form-control form-control-sm" value="권선생"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">성별</th>
+                                                <td class="align-middle">
+                                                    <div class="d-flex gap-4">
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdo" id="rdo01" value="" checked>
+                                                            <label class="form-check-label" for="rdo01">남자</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdo" id="rdo02" value="">
+                                                            <label class="form-check-label" for="rdo02">여자</label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">생년월일</th>
+                                                <td>
+                                                    <div class="d-flex align-items-center gap-3">
+                                                        <input type="text" class="form-control form-control-sm w-auto" value="19820101">
+                                                        <p>(보험나이 <strong class="text-primary">40</strong>세)</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">휴대폰번호</th>
+                                                <td class="align-middle">010-0000-0000</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">신청시간</th>
+                                                <td class="align-middle">2021.04.15 11:00</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">문의보험상품</th>
+                                                <td class="align-middle">
+                                                    @@include('./modules/chk-loop.html',{
+                                                        chk : 'chk-prod',
+                                                        slt : [
+                                                            '무해지환급형보험', '의료실비보험', '암보험', '치아보험', '건강보험', '어린이/태아보험',
+                                                            '운전자보험', '상해/골프보험', '종신/정기보험', '저축/연금보험', '치매간병/실버보험'
+                                                        ]
+                                                    })
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">직업</th>
+                                                <td class="align-middle">
+                                                    <div class="d-flex align-items-center">
+                                                        @@include('./modules/chk-loop.html',{
+                                                            rdo : 'rdo-slt',
+                                                            slt : [
+                                                                '사무직', '주부', '학생'
+                                                            ]
+                                                        })
+                                                        <div class="d-flex align-items-center w-auto">
+                                                            <div class="form-check mb-0 text-nowrap me-2">
+                                                                <input class="form-check-input" type="radio" id="rdo-slt04" name="rdo-slt">
+                                                                <label class="form-check-label" for="rdo-slt04">기타</label>
+                                                            </div>
+                                                            <input type="text" class="form-control form-control-sm">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">건강상태</th>
+                                                <td class="align-middle">
+                                                    <div class="d-flex align-items-center">
+                                                        <p class="w-50">최근 5년 이내에 병을 앓은 적이 있습니까?</p>
+                                                        <div class="form-check mb-0 text-nowrap me-3">
+                                                            <input class="form-check-input" type="radio" id="rdo-state01-01" name="rdo-state01">
+                                                            <label class="form-check-label" for="rdo-state01-01">예</label>
+                                                        </div>
+                                                        <div class="form-check mb-0 text-nowrap">
+                                                            <input class="form-check-input" type="radio" id="rdo-state01-02" name="rdo-state01" checked>
+                                                            <label class="form-check-label" for="rdo-state01-02">아니오</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex align-items-center mt-1">
+                                                        <p class="w-50">신체장애, 신체적인 결손이나 기능의 이상이 있습니까?</p>
+                                                        <div class="form-check mb-0 text-nowrap me-3">
+                                                            <input class="form-check-input" type="radio" id="rdo-state02-01" name="rdo-state02" checked>
+                                                            <label class="form-check-label" for="rdo-state02-01">예</label>
+                                                        </div>
+                                                        <div class="form-check mb-0 text-nowrap">
+                                                            <input class="form-check-input" type="radio" id="rdo-state02-02" name="rdo-state02">
+                                                            <label class="form-check-label" for="rdo-state02-02">아니오</label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">문의사항</th>
+                                                <td class="align-middle">
+                                                    @@include('./modules/chk-loop.html',{
+                                                        chk : 'chk-qst',
+                                                        slt : [
+                                                            '상품에 대한 자세한 문의', '보험비교 문의', '보험견적문의', 
+                                                            '가입자격문의', '상품 보장내용 문의', '보험 리모델링 요청'
+                                                        ]
+                                                    })
+                                                    <div class="d-flex align-items-center w-auto mt-2">
+                                                        <div class="form-check mb-0 text-nowrap me-2">
+                                                            <input class="form-check-input" type="checkbox" id="chk-qst07" name="chk-qst">
+                                                            <label class="form-check-label" for="chk-qst07">기타</label>
+                                                        </div>
+                                                        <input type="text" class="form-control form-control-sm w-50">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <section>
+                                    <h3 class="tbl-title"><i class="bi bi-pencil-square"></i>상담사 변경</h3>
+                                    <table class="table row-table">
+                                        <colgroup>
+                                            <col style="width:20%">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">상담사</th>
+                                                <td>
+                                                    <div class="d-flex gap-1">
+                                                        <input type="text" class="form-control form-control-sm w-25" value="김상담설계사">
+                                                        <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#counselor-search">찾기</button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <div class="btn-wrap d-flex justify-content-end mt-3 gap-1">
+                                    <button type="submit" class="btn btn-sm btn-primary submit">저장</button>
+                                    <a href="/webadmin/page/sub_03_03.html" class="btn btn-sm btn-secondary submit">취소</a>
+                                </div>
+                            </div>
+                            <div class="form-wrap partition">
+                                <!-- 내역추가 loop -->
+                                <section>
+                                    <div class="d-flex align-items-center mb-2 gap-1">
+                                        <h3 class="tbl-title pb-0"><i class="bi bi-pencil-square"></i>상담 진행 내역</h3>
+                                        <button type="button" class="btn btn-sm btn-outline-primary ms-auto">저장</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">취소</button>
+                                    </div>
+                                    <table class="table row-table">
+                                        <colgroup>
+                                            <col style="width:20%">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">제목</th>
+                                                <td class="align-middle">
+                                                    <input type="text" class="form-control form-control-sm">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">작성자</th>
+                                                <td class="align-middle">김상담</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">등록일</th>
+                                                <td class="align-middle">2021.05.01</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">관심 보험</th>
+                                                <td class="align-middle">
+                                                    <input type="text" class="form-control form-control-sm">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">내용</th>
+                                                <td class="align-middle">
+                                                    <textarea class="form-control form-control-sm"></textarea>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">상태</th>
+                                                <td class="align-middle">
+                                                    <div class="d-flex gap-4">
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate01" value="" checked>
+                                                            <label class="form-check-label" for="rdostate01">접수</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate02" value="">
+                                                            <label class="form-check-label" for="rdostate02">부재</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate03" value="">
+                                                            <label class="form-check-label" for="rdostate03">거절</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate04" value="">
+                                                            <label class="form-check-label" for="rdostate04">가망고객</label>
+                                                        </div>
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="radio" name="rdostate" id="rdostate05" value="">
+                                                            <label class="form-check-label" for="rdostate05">계약</label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">첨부파일</th>
+                                                <td class="align-middle">
+                                                    <input class="form-control form-control-sm" type="file" id="file-upload">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <!-- // 내역추가 loop -->
+                                <!-- 내역추가 loop -->
+                                <section>
+                                    <div class="d-flex align-items-center mb-2 gap-1">
+                                        <h3 class="tbl-title pb-0"><i class="bi bi-pencil-square"></i>상담 진행 내역</h3>
+                                        <button type="button" class="btn btn-sm btn-outline-primary ms-auto">수정</button>
+                                        <button type="button" class="btn btn-sm btn-outline-danger">삭제</button>
+                                    </div>
+                                    <table class="table row-table">
+                                        <colgroup>
+                                            <col style="width:20%">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">제목</th>
+                                                <td class="align-middle">암보험 상담 40세</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">작성자</th>
+                                                <td class="align-middle">김상담</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">등록일</th>
+                                                <td class="align-middle">2021.05.01</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">관심 보험</th>
+                                                <td class="align-middle">암보험 비갱신형</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">내용</th>
+                                                <td class="align-middle">
+                                                    오전 10시 통화하여 보험 상담<br>
+                                                    암보험에 관심많으며, 현재 40대로 가장이며, 태양산업의 부장으로 근무중<br>
+                                                    현재 보험료로 월 100만원 지출 중.<br><br>
+                                                    추가 상담하기로 함.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">상태</th>
+                                                <td class="align-middle">
+                                                    <span class="badge bg-secondary">접수</span>
+                                                    <span class="badge bg-warning text-dark">부재</span>
+                                                    <span class="badge bg-danger">거절</span>
+                                                    <span class="badge bg-primary">가망고객</span>
+                                                    <span class="badge bg-success">계약</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">첨부파일</th>
+                                                <td class="align-middle"><a href="#n" class="link-primary fw-bold"><i class="bi bi-download me-1"></i>김상담님암보험설계서.pdf</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <!-- // 내역추가 loop -->
+                                <div class="btn-wrap d-flex justify-content-end mt-3 gap-1">
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus-circle me-1"></i>상담 진행 내역 추가</button>
+                                </div>
+                            </div>
+                            <div class="btn-wrap d-flex justify-content-end mt-5 pt-3 gap-1 border-top">
+                                <a href="/webadmin/page/sub_03_02.html" class="btn btn-sm btn-secondary submit">목록</a>
+                            </div>
+                        </div>
+                        <!-- // 온라인가입신청 -->
+                    </div>
+                </main>
+                <!-- // contents -->
+            </div>
+        </div>
+        <!-- // container -->
+    </div>
+
+    <!-- modal -->
+    <article id="counselor-search" class="modal big fade" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="modal-title">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="modal-title" class="modal-title">상담사 목록</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="닫기"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex gap-1">
+                        <input type="text" class="form-control form-control-sm" placeholder="상담사 이름을 입력하세요.">
+                        <button type="button" class="btn btn-sm btn-dark">검색</button>
+                    </div>
+                    <table class="table table-hover align-middle text-center mt-4">
+                        <thead class="table-gray">
+                            <tr>
+                                <th scope="col">부서</th>
+                                <th scope="col">이름</th>
+                                <th scope="col">소속</th>
+                                <th scope="col">직급</th>
+                                <th scope="col">휴대폰번호</th>
+                                <th scope="col">적용</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>고객상담팀</td>
+                                <td>김상담</td>
+                                <td>경인사업부</td>
+                                <td>팀장</td>
+                                <td>010-0000-0000</td>
+                                <td><button type="button" class="btn btn-sm btn-outline-primary">적용</button></td>
+                            </tr>
+                            <tr>
+                                <td>고객상담팀</td>
+                                <td>김상담</td>
+                                <td>경인사업부</td>
+                                <td>팀장</td>
+                                <td>010-0000-0000</td>
+                                <td><button type="button" class="btn btn-sm btn-outline-primary">적용</button></td>
+                            </tr>
+                            <tr>
+                                <td>고객상담팀</td>
+                                <td>김상담</td>
+                                <td>경인사업부</td>
+                                <td>팀장</td>
+                                <td>010-0000-0000</td>
+                                <td><button type="button" class="btn btn-sm btn-outline-primary">적용</button></td>
+                            </tr>
+                            <tr>
+                                <td>고객상담팀</td>
+                                <td>김상담</td>
+                                <td>경인사업부</td>
+                                <td>팀장</td>
+                                <td>010-0000-0000</td>
+                                <td><button type="button" class="btn btn-sm btn-outline-primary">적용</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </article>
+    <!-- // modal -->
+    @@include('./layout/foot.html')
+</body>
+</html>
